@@ -20,7 +20,7 @@ body::-webkit-scrollbar-thumb {
     z-index: 1;
 }
 .hContainer.login-background{
-  background-image: url(haji.jpg);
+  background-image: url(./asset/haji.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-color: rgba(255, 255, 255, 0.5);
@@ -332,6 +332,7 @@ input[type="submit"]:hover{
   cursor: pointer;
   outline: none;
   font-size: 16px;
+  font-weight: 550;
 
   position: absolute;
   top: 20%;
@@ -463,5 +464,26 @@ img{
   background-color: #369B9B;
 }
 .hContainer.daftar{
-  height: 1000px;
+  height: 1500px;
+}
+.img-kotak{
+  width: 300px; 
+  height: 400px; 
+  object-fit: cover;
+}
+.form{
+  padding: 20px;
+  top: 135px;
+  position: absolute;
+  display: block;
+}
+.form h3{
+  font-size: inherit;
+  font-weight: inherit;
+  display: inline-block;
+  vertical-align: middle;
+}
+.form label, .form input[type="checkbox"] {
+  display: inline-block;
+  vertical-align: middle;
 }
