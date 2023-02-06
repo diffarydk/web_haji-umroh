@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selamat Datang</title>
     <link rel="stylesheet" href="./style/style.css"/>
+    <script src="./script/jquery.js"></script>
+    <script>
+    $(document).ready(function() {
+      $('input[type="checkbox"]').on('change', function() {
+        $('input[name="' + this.name + '"]').not(this).prop('checked', false);
+            });
+        });
+    </script>
 </head>
 <body>
     <main>
@@ -14,19 +22,49 @@
         <form class="form" action="" method="post">
             
             <h3>Program :</h3>
-            <label for="checkbox1">Umroh Reguler</label>
-            <input type="checkbox" id="checkbox1" name="checkboxGroup" value="Pilihan 1">
-            <label for="checkbox2">Umroh Plus</label>
-            <input type="checkbox" id="checkbox2" name="checkboxGroup" value="Pilihan 2">
+            <label for="reguler">
+            <input type="checkbox" id="reguler" name="tipe[1][]" value="1">Umroh Reguler</label>
+            <label for="plus">
+            <input type="checkbox" id="plus" name="tipe[1][]" value="2">Umroh Plus</label>
+            <br>
+            <label for="quad">
+            <input type="checkbox" id="quad" name="kamar[2][]" value="1">Quad</label>
+            <label for="triple">
+            <input type="checkbox" id="triple" name="kamar[2][]" value="2">Triple</label>
+            <label for="double">
+            <input type="checkbox" id="double" name="kamar[2][]" value="3">Double</label>
             <br><br>
-            <label for="">Nama Pendaftar</label><br>
-            <input type="text" name="nama_pendaftar" id="">
+            <div class="field field_v1">
+            <label for="nama" class="ha-screen-reader">Nama Lengkap</label><br>
+            <input type="text" name="nama" id="nama" class="field__input" placeholder="Isikan nama lengkap anda" required>
+            <span class="field__label-wrap" aria-hidden="true">
+                <span class="field__label">Nama Lengkap</span>
+              </span>
+            </div>
             <br><br>
-            <label for="">Nomor HP</label><br>
-            <input type="tel" name="nomor_hp" id="">
+            <div class="field field_v1">
+            <label for="nik" class="ha-screen-reader">NIK</label><br>
+            <input type="txt" name="nik" id="nik" class="field__input" placeholder="Nomor kartu penduduk anda" pattern="\d*" required>
+            <span class="field__label-wrap" aria-hidden="true">
+                <span class="field__label">NIK</span>
+              </span>
+            </div>
             <br><br>
-            <label for="">Alamat</label><br>
-            <input type="text" name="alamat" id="">
+            <div class="field field_v1">
+                <label for="ayah" class="ha-screen-reader">Nama Ayah Kandung</label><br>
+                <input type="txt" name="ayah" id="ayah" class="field__input" placeholder="Masukkan nama lengkap ayah anda" required>
+                <span class="field__label-wrap" aria-hidden="true">
+                    <span class="field__label">Nama Ayah Kandung</span>
+                  </span>
+                </div>
+            <br><br>
+            <div class="field field_v1">
+                <label for="lahir" class="ha-screen-reader">Tempat Lahir</label><br>
+                <input type="txt" name="lahir" id="lahir" class="field__input" placeholder="Tempat lahir anda" required>
+                <span class="field__label-wrap" aria-hidden="true">
+                    <span class="field__label">Tempat Lahir Anda</span>
+                  </span>
+                </div>
             <br><br>
         </form>
         <nav class="sidebar">
@@ -49,6 +87,6 @@
         </nav>
     </div>
 </main>
-    <script src="./script/script.js"></script>
+    </script>
 </body>
 </html>
