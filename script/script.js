@@ -17,4 +17,17 @@ $('.collapse-btn').click(function() {
   $('.collapse-content').slideToggle();
   $(this).toggleClass('active');
 });
+const checkContent = document.querySelector('.passport');
+const passportYes = document.querySelector('#yes');
+const passportNo = document.querySelector('#no');
+
+passportYes.addEventListener('click', function() {
+  checkContent.classList.add('display-block');
+  checkContent.classList.remove('display-none');
+});
+
+passportNo.addEventListener('click', function() {
+  checkContent.classList.add('display-none');
+  checkContent.classList.remove('display-block');
+});
 };
