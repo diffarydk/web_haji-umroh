@@ -22,6 +22,7 @@
         <form class="form" action="" method="post">
             
             <h3>Program :</h3>
+            <span class="note-1">*</span>
             <label for="reguler">
             <input type="checkbox" id="reguler" name="tipe[1][]" value="1">Umroh Reguler</label>
             <label for="plus">
@@ -29,10 +30,13 @@
             <br>
             <label for="quad">
             <input type="checkbox" id="quad" name="kamar[2][]" value="1">Quad</label>
+            <span class="note-1">*</span>
             <label for="triple">
             <input type="checkbox" id="triple" name="kamar[2][]" value="2">Triple</label>
+            <span class="note-1">*</span>
             <label for="double">
             <input type="checkbox" id="double" name="kamar[2][]" value="3">Double</label>
+            <span class="note-1">*</span>
             <br><br>
             <div class="field field_v1">
             <label for="nama" class="ha-screen-reader">Nama Lengkap</label><br>
@@ -40,6 +44,7 @@
             <span class="field__label-wrap" aria-hidden="true">
                 <span class="field__label">Nama Lengkap</span>
               </span>
+              <span class="note-1">*</span>
             </div>
             <br><br>
             <div class="field field_v1">
@@ -48,6 +53,7 @@
             <span class="field__label-wrap" aria-hidden="true">
                 <span class="field__label">NIK</span>
               </span>
+              <span class="note-1">*</span>
             </div>
             <br><br>
             <div class="field field_v1">
@@ -56,6 +62,7 @@
                 <span class="field__label-wrap" aria-hidden="true">
                     <span class="field__label">Nama Ayah Kandung</span>
                   </span>
+                  <span class="note-1">*</span>
                 </div>
             <br><br>
             <div class="field field_v1">
@@ -64,40 +71,47 @@
                 <span class="field__label-wrap" aria-hidden="true">
                     <span class="field__label">Tempat Lahir Anda</span>
                   </span>
+                  <span class="note-1">*</span>
                 </div>
             <br><br>
             <div class="tanggal">
               <label for="dateofbirth" class="za-lahir">Tanggal Lahir</label>
               <input type="date" name="dateofbirth" id="dateofbirth" class="tanggal-input" required>
+              <span class="note-1">*</span>
               </div>
               <br>
               <div class="field field_v1">
-                <label for="passport" class="ha-screen-reader">Nomor Passport (tidak wajib jika tidak punya)</label><br>
+                <label for="passport" class="ha-screen-reader">Nomor Passport</label><br>
                 <input type="txt" name="passport" id="passport" class="field__input" placeholder="Masukkan nomor passport">
                 <span class="field__label-wrap" aria-hidden="true">
-                    <span class="field__label">Nomor Passport (tidak wajib jika tidak punya)</span>
+                    <span class="field__label">Nomor Passport</span>
                   </span>
+                  <span class="note">(tidak wajib jika tidak punya)</span>
                 </div>
             <br><br>
             <div class="field field_v1">
-              <label for="tmpt-passport" class="ha-screen-reader">Tempat Dikeluarkan Passport (tidak wajib)</label><br>
+              <label for="tmpt-passport" class="ha-screen-reader">Tempat Dikeluarkan Passport</label><br>
               <input type="txt" name="tmpt-passport" id="tmpt-passport" class="field__input" placeholder="Masukkan tempat dikeluarkan passport anda">
               <span class="field__label-wrap" aria-hidden="true">
-                  <span class="field__label">Tempat Dikeluarkan Passport (tidak wajib)</span>
+                  <span class="field__label">Tempat Dikeluarkan Passport</span>
                 </span>
-              </div>
+              <span class="note">(tidak wajib)</span>
+            </div>
           <br><br>
           <div class="tanggal">
-            <label for="tgl-passport" class="za-lahir">Tanggal Dikeluarkan Passport (tidak wajib)</label>
+            <label for="tgl-passport" class="za-lahir">Tanggal Dikeluarkan Passport</label>
             <input type="date" name="tgl-passport" id="tgl-passport" class="tanggal-input">
+            <span class="note">(tidak wajib)</span>
             </div>
             <br>
             <div class="tanggal">
-              <label for="ms-passport" class="za-lahir">Masa Berlaku Passport (tidak wajib)</label>
+              <label for="ms-passport" class="za-lahir">Masa Berlaku Passport</label>
               <input type="date" name="ms-passport" id="ms-passport" class="tanggal-input">
+              <span class="note">(tidak wajib)</span>
               </div>
               <br>
               <h3>Jenis Kelamin :</h3>
+              <span class="note-1">*</span>
               <label for="pria">
               <input type="checkbox" id="pria" name="tipe[3][]" value="1">Pria</label>
               <label for="wanita">
@@ -113,32 +127,169 @@
                   <option value="O">O</option>
                 </select>
               </div>
+              <span class="note-1">*</span>
               <br>
               <div class="goldar">
                 <label for="dataOption"></label>
                 <select id="provinsi" name="provinsi" required></select>
                 <option value=""></option>
                 </div>
+                <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
                 <label for="dataOption"></label>
                 <select id="kota" name="kota" required></select>
                 <option value=""></option>
                 </div>
+                <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
                 <label for="dataOption" name="kec" required></label>
                 <select id="kec"></select>
                 <option value=""></option>
                 </div>
+                <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
                 <label for="dataOption" name="kel" required></label>
                 <select id="kel"></select>
                 <option value=""></option>
               </div>
-
+              <span class="note-1">*</span>
+              <br>
+              <div class="field field_v1">
+                <label for="jalan" class="ha-screen-reader">Jalan</label><br>
+                <input type="txt" name="jalan" id="jalan" class="field__input" placeholder="Masukkan jalan tempat tinggal anda" required>
+                <span class="field__label-wrap" aria-hidden="true">
+                    <span class="field__label">Jalan</span>
+                  </span>
+                  <span class="note-1">*</span>
+                </div>
+                <br><br>
+                <div class="field field_v1">
+                  <label for="email" class="ha-screen-reader">Email</label><br>
+                  <input type="email" name="email" id="email" class="field__input" placeholder="Masukkan Email anda" required>
+                  <span class="field__label-wrap" aria-hidden="true">
+                      <span class="field__label">Email</span>
+                    </span>
+                    <span class="note-1">*</span>
+                  </div>
+                  <br><br>
+                  <div class="field field_v1">
+                    <label for="no_telp_rumah" class="ha-screen-reader">No Telpon Rumah</label><br>
+                    <input type="txt" name="no_telp_rumah" id="no_telp_rumah" class="field__input" placeholder="Nomor telpon rumah anda" pattern="\d*" required>
+                    <span class="field__label-wrap" aria-hidden="true">
+                        <span class="field__label">No Telpon Rumah</span>
+                      </span>
+                      <span class="note-1">*</span>
+                    </div>
+                    <br><br>
+                    <div class="field field_v1">
+                      <label for="no_telp_seluler" class="ha-screen-reader">No Telpon Seluler</label><br>
+                      <input type="txt" name="no_telp_seluler" id="no_telp_seluler" class="field__input" placeholder="Nomor telpon seluler anda" pattern="\d*" required>
+                      <span class="field__label-wrap" aria-hidden="true">
+                          <span class="field__label">No Telpon Seluler</span>
+                        </span>
+                        <span class="note-1">*</span>
+                      </div>
+                      <br><br>
+                      <h3>Pendidikan Terakhir :</h3>
+                      <span class="note-1">*</span>
+                      <label for="sd">
+                      <input type="checkbox" id="sd" name="pen[4][]" value="1">SD/Sederajat</label>
+                      <label for="smp">
+                      <input type="checkbox" id="smp" name="pen[4][]" value="2">SMP/Sederajat</label>
+                      <label for="sma">
+                      <input type="checkbox" id="sma" name="pen[4][]" value="1">SMA/Sederajat</label>
+                      <label for="s1">
+                      <input type="checkbox" id="s1" name="pen[4][]" value="2">S1/Sederajat/Lebih</label>
+                      <br>
+                      <div class="field field_v1">
+                        <label for="pekerjaan" class="ha-screen-reader">Pekerjaan</label><br>
+                        <input type="txt" name="pekerjaan" id="pekerjaan" class="field__input" placeholder="Masukkan pekerjaan anda" required>
+                        <span class="field__label-wrap" aria-hidden="true">
+                            <span class="field__label">Pekerjaan</span>
+                          </span>
+                          <span class="note-1">*</span>
+                        </div>
+                        <br><br>
+                        <div class="field field_v1">
+                          <label for="keluarga_yg_ikut" class="ha-screen-reader">Keluarga Yang Ikut</label><br>
+                          <input type="txt" name="keluarga_yg_ikut" id="keluarga_yg_ikut" class="field__input" placeholder="Keluarga Yang Ikut">
+                          <span class="field__label-wrap" aria-hidden="true">
+                              <span class="field__label">Keluarga yang ikut</span>
+                            </span>
+                            <span class="note">(tidak wajib)</span>
+                          </div>
+                          <br><br>
+                          <div class="field field_v1">
+                            <label for="hubungan" class="ha-screen-reader">Hubungan</label><br>
+                            <input type="txt" name="hubungan" id="hubungan" class="field__input" placeholder="Hubungan">
+                            <span class="field__label-wrap" aria-hidden="true">
+                                <span class="field__label">Hubungan</span>
+                              </span>
+                              <span class="note">(tidak wajib jika tidak ikut)</span>
+                            </div>
+                            <br><br>
+                            <div class="field field_v1">
+                              <label for="no_telp" class="ha-screen-reader">No Telpon Keluarga Yang Ikut</label><br>
+                              <input type="txt" name="no_telp_seluler" id="no_telp_seluler" class="field__input" placeholder="Nomor telpon keluarga yang ikut" pattern="\d*" required>
+                              <span class="field__label-wrap" aria-hidden="true">
+                                  <span class="field__label">No Telpon Keluarga Yang ikut</span>
+                                </span>
+                                <span class="note">(tidak wajib jika tidak ikut)</span>
+                              </div>
+                              <br><br>
+                              <div class="field field_v1">
+                                <label for="informasi_pendaftaran" class="ha-screen-reader">Informasi Pendaftaran (Refferal)</label><br>
+                                <input type="txt" name="informasi_pendaftaran" id="informasi_pendaftaran" class="field__input" placeholder="Masukkan nama orang yang mengajak anda untuk daftar di Itkontama Travel">
+                                <span class="field__label-wrap" aria-hidden="true">
+                                    <span class="field__label">Informasi Pendaftaran (Refferal)</span>
+                                  </span>
+                                <span class="note">(tidak wajib)</span>
+                              </div>
+                            <br><br>
+                            <div class="field field_v1">
+                              <label for="penyakit_kronis" class="ha-screen-reader">Penyakit Kronis</label><br>
+                              <input type="txt" name="penyakit_kronis" id="penyakit_kronis" class="field__input" placeholder="Masukkan jika punya">
+                              <span class="field__label-wrap" aria-hidden="true">
+                                  <span class="field__label">Penyakit Kronis</span>
+                                </span>
+                                <span class="note">(masukkan jika punya)</span>
+                              </div>
+                              <br><br>
+                              <div class="field field_v1">
+                                <label for="keluarga_yg_bisa_dihubungi" class="ha-screen-reader">Keluarga Yang Bisa Dihubungi Ketika Darurat</label><br>
+                                <input type="txt" name="keluarga_yg_bisa_dihubungi" id="keluarga_yg_bisa_dihubungi" class="field__input" placeholder="Nama keluarga yang bisa dihubungi" required>
+                                <span class="field__label-wrap" aria-hidden="true">
+                                    <span class="field__label">Keluarga Yang Bisa Dihubungi Ketika Darurat</span>
+                                  </span>
+                                  <span class="note-1">*</span>
+                                </div>
+                                <br><br>
+                                <div class="field field_v1">
+                                  <label for="hubungan_keluarga" class="ha-screen-reader">Hubungan Keluarga Yang Bisa Dihubungi Ketika Darurat</label><br>
+                                  <input type="txt" name="hubungan_keluarga" id="hubungan_keluarga" class="field__input" placeholder="Hubungan keluarga yang bisa dihubungi" required>
+                                  <span class="field__label-wrap" aria-hidden="true">
+                                      <span class="field__label">Hubungan Keluarga Yang Bisa Dihubungi Ketika Darurat</span>
+                                    </span>
+                                    <span class="note-1">*</span>
+                                  </div>
+                                  <br><br>
+                                <div class="field field_v1">
+                                  <label for="no_telp_keluarga" class="ha-screen-reader">No Telpon Keluarga Yang Bisa Dihubungi Ketika Darurat</label><br>
+                                  <input type="txt" name="no_telp_keluarga" id="no_telp_keluarga" class="field__input" placeholder="Nomor keluarga yang bisa dihubungi" required>
+                                  <span class="field__label-wrap" aria-hidden="true">
+                                      <span class="field__label">No Telpon Keluarga Yang Bisa Dihubungi Ketika Darurat</span>
+                                    </span>
+                                    <span class="note-1">*</span>
+                                  </div>
+                                  <br><br>
         </form>
+        <div class="button-container form">
+          <button class="left-button batal">Kembali</button>
+            <a href="form-daftar.html"><button href="" class="right-button kirim">Kirim</button></a>
+        </div>
         <nav class="sidebar">
             <img class="user-logo" src="./asset/icon-user.png" alt="user-logo" href="index.html">
             <ul class="nav-list">

@@ -417,6 +417,15 @@ input[type="submit"]:hover{
   padding: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+.button-container.form{
+  position: absolute;
+  top: 2080px;
+  height: 10px;
+  width: 90%;
+  margin-left: 50px;
+  background-color: inherit;
+  box-shadow: none;
+}
 img{
   object-fit: cover;
 }
@@ -445,6 +454,13 @@ img{
 .left-button:hover {
   background-color: #FF9D3A;
 }
+.left-button.batal{
+  background-color: #D9D9D9;
+  color: black;
+}
+.left-button.batal:hover{
+  background-color: #DCDCDC;
+}
 .right-button {
   background-color: #247372;
   padding: 10px;
@@ -466,7 +482,7 @@ img{
   background-color: #369B9B;
 }
 .hContainer.daftar{
-  height: 1500px;
+  height: 2200px;
 }
 .img-kotak{
   width: 300px; 
@@ -650,4 +666,12 @@ img{
   appearance: none;
   -webkit-appearance: none;
   background-color: transparent;
+}
+.note {
+  font-size: 12px;
+  color: blue;
+  padding-left: 10px;
+}
+.note-1{
+  color: red;
 }
