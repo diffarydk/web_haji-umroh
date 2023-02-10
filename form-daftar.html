@@ -19,7 +19,7 @@
     <main>
     <div class="hContainer daftar">
         <h1 class="heading">Formulir Pendaftaran</h1>
-        <form class="form" action="" method="post">
+        <form class="form" action="" method="post" enctype="multipart/form-data">
             
             <h3>Program :</h3>
             <span class="note-1">*</span>
@@ -284,12 +284,16 @@
                                     </span>
                                     <span class="note-1">*</span>
                                   </div>
-                                  <br><br>
+                                  <br><br><br>
+                                  <label for="file"></label>
+                                  <span>Foto 3X4 :</span>
+                                  <span class="note-1">*</span>
+                                  <input type="file" id="file" name="file" class="file-input" required>
+                                  <div class="button-container form">
+                                    <a href="pendaftaran.html"><button class="left-button batal">Kembali</button></a>
+                                      <a href="table_jadwal.html"><button href="table_jadwal.html" class="right-button kirim" type="submit" value="Submit">Kirim</button></a>
+                                  </div>
         </form>
-        <div class="button-container form">
-          <button class="left-button batal">Kembali</button>
-            <a href="#"><button href="#" class="right-button kirim">Kirim</button></a>
-        </div>
         <nav class="sidebar">
             <img class="user-logo" src="./asset/icon-user.png" alt="user-logo" href="index.html">
             <ul class="nav-list">
