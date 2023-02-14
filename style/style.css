@@ -513,10 +513,51 @@ img{
 .right-button:hover {
   background-color: #369B9B;
 }
-.right-button.kirim{
-  position: relative;
-  justify-content: space-around;
-  margin-left: 120px;
+.kirim{
+  position: absolute;
+  background-color: #247372;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  float: left;
+  margin-left: 130px;
+  top: 2070px;
+  cursor: pointer;
+  width: 170px;
+  height: 54px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.kirim:hover {
+  background-color: #369B9B;
+}
+.bBtn{
+  position: absolute;
+  background-color: #D9D9D9;
+  color: black;
+  border-radius: 5px;
+  border: none;
+  float: left;
+  margin-left: 100px;
+  top: 2200px;
+  cursor: pointer;
+  width: 170px;
+  height: 54px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.bBtn:hover{
+  background-color: #DCDCDC;
 }
 .hContainer.daftar{
   height: 2300px;
@@ -845,7 +886,7 @@ img{
   margin-left: 20px;
   font-style: normal;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 24px;
   color: #818181;
 }

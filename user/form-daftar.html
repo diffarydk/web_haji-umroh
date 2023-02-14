@@ -24,18 +24,18 @@
             <h3>Program :</h3>
             <span class="note-1">*</span>
             <label for="reguler">
-            <input type="checkbox" id="reguler" name="tipe[1][]" value="1">Umroh Reguler</label>
+            <input type="checkbox" id="reguler" name="tipe1" value="1">Umroh Reguler</label>
             <label for="plus">
-            <input type="checkbox" id="plus" name="tipe[1][]" value="2">Umroh Plus</label>
+            <input type="checkbox" id="plus" name="tipe2" value="2">Umroh Plus</label>
             <br>
             <label for="quad">
-            <input type="checkbox" id="quad" name="kamar[2][]" value="1">Quad</label>
+            <input type="checkbox" id="quad" name="kamar1" value="1">Quad</label>
             <span class="note-1">*</span>
             <label for="triple">
-            <input type="checkbox" id="triple" name="kamar[2][]" value="2">Triple</label>
+            <input type="checkbox" id="triple" name="kamar2" value="2">Triple</label>
             <span class="note-1">*</span>
             <label for="double">
-            <input type="checkbox" id="double" name="kamar[2][]" value="3">Double</label>
+            <input type="checkbox" id="double" name="kamar3" value="3">Double</label>
             <span class="note-1">*</span>
             <br><br>
             <div class="field field_v1">
@@ -113,9 +113,9 @@
               <h3>Jenis Kelamin :</h3>
               <span class="note-1">*</span>
               <label for="pria">
-              <input type="checkbox" id="pria" name="tipe[3][]" value="1">Pria</label>
+              <input type="checkbox" id="pria" name="kelamin1" value="1">Pria</label>
               <label for="wanita">
-              <input type="checkbox" id="wanita" name="tipe[3][]" value="2">Wanita</label>
+              <input type="checkbox" id="wanita" name="kelamin2" value="2">Wanita</label>
               <br><br>
               <div class="goldar">
                 <label for="bloodType"></label>
@@ -196,13 +196,13 @@
                       <h3>Pendidikan Terakhir :</h3>
                       <span class="note-1">*</span>
                       <label for="sd">
-                      <input type="checkbox" id="sd" name="pen[4][]" value="1">SD/Sederajat</label>
+                      <input type="checkbox" id="sd" name="pen4" value="1">SD/Sederajat</label>
                       <label for="smp">
-                      <input type="checkbox" id="smp" name="pen[4][]" value="2">SMP/Sederajat</label>
+                      <input type="checkbox" id="smp" name="pen5" value="2">SMP/Sederajat</label>
                       <label for="sma">
-                      <input type="checkbox" id="sma" name="pen[4][]" value="1">SMA/Sederajat</label>
+                      <input type="checkbox" id="sma" name="pen6" value="3">SMA/Sederajat</label>
                       <label for="s1">
-                      <input type="checkbox" id="s1" name="pen[4][]" value="2">S1/Sederajat/Lebih</label>
+                      <input type="checkbox" id="s1" name="pen7" value="4">S1/Sederajat/Lebih</label>
                       <br>
                       <div class="field field_v1">
                         <label for="pekerjaan" class="ha-screen-reader">Pekerjaan</label><br>
@@ -289,17 +289,13 @@
                                   <span>Foto 3X4 :</span>
                                   <span class="note-1">*</span>
                                   <input type="file" id="file" name="file" class="file-input" required>
-                                  <div class="button-container form">
-                                      <a href="table_jadwal.html"><button href="table_jadwal.html" class="right-button kirim" type="submit"  name ="submit" value="submit">Kirim</button></a>
-                                  </div>
+                                      <a href="table_jadwal.html"><button href="table_jadwal.html" class="kirim" type="submit"  name ="submit" value="submit">Kirim</button></a>
         </form>
-        <div class="button-container form">
-        <a href="pendaftaran.html"><button class="left-button batal">Kembali</button></a>
-      </div>
+        <a href="pendaftaran.html"><button class="bBtn">Kembali</button></a>
         <nav class="sidebar">
             <img class="user-logo" src="../asset/icon-user.png" alt="user-logo" href="index.html">
             <ul class="nav-list">
-                <li class="list-item"><a class="login" href="./login.html">Login/Daftar</a></li>
+                <li class="list-item"><a class="login" href="login.html">Login/Daftar</a></li>
                 <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>
                 <li class="list-item"><a class="fa" href="kontak.html">Kontak</a></li>
                 <li class="list-item"><a class="fa" href="pendaftaran.html">Daftar Haji & Umroh</a></li>
