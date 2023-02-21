@@ -10,31 +10,28 @@
 <body>
     <main>
     <div class="hContainer">
-        <div class="boxes">
-            <div class="box">
-              <img class="img-kotak" src="../../asset/umrah.png" alt="Image">
-                <div class="button-container">
-                  <button class="left-button">Paket</button>
-                    <a href="form-daftar.html"><button href="form-daftar.html" class="right-button">Daftar</button></a>
+        <div class="bContainer">
+            <img class="img" src="../../asset/LogoItkon.png" alt="">
+            <div class="line"></div>
+            <h3>Nomor Transaksi : </h3>
+            <div class="line n"></div>
+            <h3>Status Pembayaran : </h3>
+            <div class="line n"></div>
+            <h3>Status Transaksi : </h3>
+            <div class="sts">
+                <label for="sts"></label>
+                <select id="sts" name="sts">
+                  <option value="blm_stju" selected>Belum Disetujui</option>
+                  <option value="stju">Setuju</option>
+                </select>
                 </div>
-            </div>
-            <div class="box">
-              <img class="img-kotak" src="../../asset/haji2.png" alt="Image">
-                <div class="button-container">
-                  <button class="left-button">Paket</button>
-                    <a href="form-daftar.html"><button href="form-daftar.html" class="right-button">Daftar</button></a>
-                </div>
-            </div>
-            <div class="box">
-              <img class="img-kotak" src="../../asset/travel.png" alt="Image">
-                <div class="button-container">
-                  <button class="left-button">Paket</button>
-                    <a href="#"><button href="#" class="right-button">Daftar</button></a>
-                </div>
-            </div>
-          </div> 
+            <div class="line n"></div>
+            <h3>Waktu Pembayaran : </h3>
+            <a href="dashboard_pembayaran.html"><button class="tombol">Kembali</button></a>
+            <button class="tombol-2" type="submit" value="submit">Simpan</button>
+          </div>
         <nav class="sidebar">
-          <img class="user-logo" src="../../asset/icon-user.png" alt="user-logo" href="../welcome.html">
+            <img class="user-logo" src="../../asset/icon-user.png" alt="user-logo" href="../welcome.html">
             <ul class="nav-list">
                 <li class="list-item"><a class="login" href="login.html">Login/Daftar</a></li>
                 <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>
@@ -53,6 +50,6 @@
         </nav>
     </div>
 </main>
-<script src="../../script/script.js"></script>
+    <script src="../../script/script.js"></script>
 </body>
 </html>
