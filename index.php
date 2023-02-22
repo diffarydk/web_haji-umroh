@@ -22,21 +22,13 @@ if($_SESSION['level'] = "") {
         <nav class="sidebar">
           <a href="display/user/profile.html"><img class="user-logo" src="core/asset/icon-user.png" alt="user-logo" href="index.html"></a>  
             <ul class="nav-list">
-<<<<<<< HEAD
                 <li class="list-item"><a class="login" href="display/user/login.php">Login/Daftar</a></li>
-=======
-                <li class="list-item"><a class="login" href="display/">Login/Daftar</a></li>
->>>>>>> e3e7febc4b93a247e8bad5f6ba4b3cfdb5e34701
                 <li class="list-item"><a class="fa" href="display/user/galeri.html">Galeri</a></li>
                 <li class="list-item"><a class="fa" href="display/user/kontak.html">Kontak</a></li>
                 <li class="list-item"><a class="fa" href="display/user/pendaftaran.html">Daftar Haji & Umroh</a></li>
                 <li class="list-item"><a class="fa" href="display/user/panduan.html">Panduan</a></li>
                 <li class="list-item"><a class="fa tentang-kami" href="display/user/tentang-kami.html">Tentang Kami</a></li>
-<<<<<<< HEAD
                 <li class="list-item"><a class="logout" href="./controller/logout.php">Logout</a></li>
-=======
-                <li class="list-item"><a class="logout" href="controller/logout.php">Logout</a></li>
->>>>>>> e3e7febc4b93a247e8bad5f6ba4b3cfdb5e34701
               </ul>
         </nav>
         <nav class="wrapper">
