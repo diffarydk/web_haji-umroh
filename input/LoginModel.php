@@ -1,10 +1,6 @@
 <?php
 session_start();
-<<<<<<< HEAD
 require_once "../connection.php";
-=======
-require_once "../core/connection.php";
->>>>>>> e3e7febc4b93a247e8bad5f6ba4b3cfdb5e34701
 class User_model extends Database {
     private $conn;
     private $username;

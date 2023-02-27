@@ -1,3 +1,10 @@
+<?php
+session_start();
+    if(!isset($_SESSION['id_users'])) {
+      echo "<script>alert('Anda harus login terlebih dahulu');window.location='../user/login.php';</script>";
+      exit;
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selamat Datang</title>
-    <link rel="stylesheet" href="../style/style.css"/>
+    <link rel="stylesheet" href="../../core/style/style.css"/>
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"/>
 </head>
 <body>
@@ -65,6 +72,6 @@
         </nav>
     </div>
 </main>
-    <script src="../script/script.js"></script>
+    <script src="../../core/script/script.js"></script>
 </body>
 </html>

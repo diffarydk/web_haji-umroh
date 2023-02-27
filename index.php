@@ -20,7 +20,7 @@ if($_SESSION['level'] = "") {
     <div class="hContainer">
             <a href="display/user/login.html"><img class="mid-img" src="core/asset/img-index.png" alt="ayo daftar"></img></a>
         <nav class="sidebar">
-          <a href="display/user/profile.html"><img class="user-logo" src="core/asset/icon-user.png" alt="user-logo" href="index.html"></a>  
+          <a href="display/user/profile.php"><img class="user-logo" src="core/asset/icon-user.png" alt="user-logo" href="index.html"></a>  
             <ul class="nav-list">
                 <li class="list-item"><a class="login" href="display/user/login.php">Login/Daftar</a></li>
                 <li class="list-item"><a class="fa" href="display/user/galeri.html">Galeri</a></li>

@@ -1,5 +1,5 @@
 <?php
-require_once "../core/connection.php";
+require_once "../connection.php";
 
 class Formulir extends Database{
     private $id_users;
@@ -36,10 +36,11 @@ class Formulir extends Database{
     private $hubungan_keluarga;
     private $no_telp_keluarga;
     private $foto;
+    private $timestamp;
     private $conn;
 
 
-    public function __construct($id_users, $program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga, $foto)
+    public function __construct($id_users, $program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga, $foto, $timestamp)
     {
         $database = new Database();
         $this->conn = $database->getConnection();
@@ -76,21 +77,19 @@ class Formulir extends Database{
         $this->keluarga_yg_bisa_dihubungi = $keluarga_yg_bisa_dihubungi;
         $this->hubungan_keluarga = $hubungan_keluarga;
         $this->no_telp_keluarga = $no_telp_keluarga;
-        $this->foto = $foto;     
+        $this->foto = $foto; 
+        $this->timestamp = $timestamp;    
     }
 
     public function Tambah_data(){
-      $query ="INSERT INTO formulir VALUES ('$this->id_users', '".implode(",", $this->program)."', '".implode(",", $this->kamar)."', 
+      $query ="INSERT INTO formulir VALUES ('$this->id_users', '$this->program', '$this->kamar', 
       '$this->nama_lengkap', '$this->nik', '$this->nama_ayah_kandung', '$this->tempat_lahir', '$this->tanggal_lahir',
       '$this->no_paspor', '$this->tempat_dikeluarkan_paspor', '$this->tanggal_dikeluarkan_paspor', '$this->masa_berlaku_paspor',
-      '".implode(",", $this->jenis_kelamin)."', '$this->golongan_darah', '$this->status_perkawinan', '$this->provinsi', '$this->kota_kabupaten',
+      '$this->jenis_kelamin', '$this->golongan_darah', '$this->status_perkawinan', '$this->provinsi', '$this->kota_kabupaten',
       '$this->kecamatan', '$this->kelurahan', '$this->jalan', '$this->email', '$this->no_telp_rumah', '$this->no_telp_seluler',
-      '".implode(",", $this->pendidikan_terakhir)."', '$this->pekerjaan', '$this->keluarga_yg_ikut', '$this->hubungan', '$this->no_telp',
+      '$this->pendidikan_terakhir', '$this->pekerjaan', '$this->keluarga_yg_ikut', '$this->hubungan', '$this->no_telp',
       '$this->informasi_pendaftaran','$this->penyakit_kronis', '$this->keluarga_yg_bisa_dihubungi', '$this->hubungan_keluarga',
-      '$this->no_telp_keluarga', '$this->foto','')";
-
-
-
+      '$this->no_telp_keluarga', '$this->foto','$this->timestamp')";
 
 if (mysqli_query($this->conn, $query)) {
     return true;
@@ -98,7 +97,14 @@ if (mysqli_query($this->conn, $query)) {
     return false;
   }
     }
-    
+ 
+    function getTimestamp($waktu, $tanggal) {
+      // Konversi input waktu dan tanggal ke format yang dapat di-parse oleh fungsi strtotime
+      $datetimeStr = $tanggal . ' ' . $waktu;
+      // Parse string datetime ke UNIX timestamp
+      $timestamp = strtotime($datetimeStr);
+      return $timestamp;
+    }
    
     
 }
