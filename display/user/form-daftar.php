@@ -1,3 +1,10 @@
+<?php
+session_start();
+    if(!isset($_SESSION['id_users'])) {
+      echo "<script>alert('Anda harus login terlebih dahulu');window.location='../user/login.php';</script>";
+      exit;
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,9 +23,9 @@
             <h3>Program :</h3>
             <span class="note-1">*</span>
             <label for="reguler">
-            <input type="radio" id="reguler" name="program" value="reguler">Umroh Reguler</label>
+            <input type="radio" id="reguler" name="program" value="1">Umroh Reguler</label>
             <label for="plus">
-            <input type="radio" id="plus" name="program" value="plus">Umroh Plus</label>
+            <input type="radio" id="plus" name="program" value="2">Umroh Plus</label>
             <br>
             <label for="quad">
             <input type="radio" id="quad" name="kamar" value="4">Quad</label>
@@ -74,7 +81,7 @@
               <br>
               <div class="field field_v1">
                 <label for="passport" class="ha-screen-reader">Nomor Passport</label><br>
-                <input type="txt" name="no_pasport" id="passport" class="field__input" placeholder="Masukkan nomor passport">
+                <input type="txt" name="no_paspor" id="passport" class="field__input" placeholder="Masukkan nomor passport">
                 <span class="field__label-wrap" aria-hidden="true">
                     <span class="field__label">Nomor Passport</span>
                   </span>
@@ -105,9 +112,9 @@
               <h3>Jenis Kelamin :</h3>
               <span class="note-1">*</span>
               <label for="pria">
-              <input type="radio" id="pria" name="jenis_kelamin" value="pria">Pria</label>
+              <input type="radio" id="pria" name="jenis_kelamin" value="1">Pria</label>
               <label for="wanita">
-              <input type="radio" id="wanita" name="jenis_kelamin" value="wanita">Wanita</label>
+              <input type="radio" id="wanita" name="jenis_kelamin" value="2">Wanita</label>
               <br><br>
               <div class="goldar">
                 <label for="bloodType"></label>
@@ -199,13 +206,13 @@
                       <h3>Pendidikan Terakhir :</h3>
                       <span class="note-1">*</span>
                       <label for="sd">
-                      <input type="radio" id="sd" name="pendidikan_terakhir" value="sd">SD/Sederajat</label>
+                      <input type="radio" id="sd" name="pendidikan_terakhir" value="1">SD/Sederajat</label>
                       <label for="smp">
-                      <input type="radio" id="smp" name="pendidikan_terakhir" value="smp">SMP/Sederajat</label>
+                      <input type="radio" id="smp" name="pendidikan_terakhir" value="2">SMP/Sederajat</label>
                       <label for="sma">
-                      <input type="radio" id="sma" name="pendidikan_terakhir" value="sma">SMA/Sederajat</label>
+                      <input type="radio" id="sma" name="pendidikan_terakhir" value="3">SMA/Sederajat</label>
                       <label for="s1">
-                      <input type="radio" id="s1" name="pendidikan_terakhir" value="s1">S1/Sederajat/Lebih</label>
+                      <input type="radio" id="s1" name="pendidikan_terakhir" value="4">S1/Sederajat/Lebih</label>
                       <br>
                       <div class="field field_v1">
                         <label for="pekerjaan" class="ha-screen-reader">Pekerjaan</label><br>
@@ -227,7 +234,7 @@
                           <br><br>
                           <div class="field field_v1">
                             <label for="hubungan" class="ha-screen-reader">Hubungan</label><br>
-                            <input type="txt" name="hubungan_keluarga" id="hubungan" class="field__input" placeholder="Hubungan">
+                            <input type="txt" name="hubungan" id="hubungan" class="field__input" placeholder="Hubungan">
                             <span class="field__label-wrap" aria-hidden="true">
                                 <span class="field__label">Hubungan</span>
                               </span>
@@ -291,7 +298,7 @@
                                   <label for="file"></label>
                                   <span>Foto 3X4 :</span>
                                   <span class="note-1">*</span>
-                                  <input type="file" id="file" name="file" class="file-input" required>
+                                  <input type="file" id="file" name="foto" class="file-input" required>
                                       <a href="table_jadwal.html"><button href="table_jadwal.html" class="kirim" type="submit"  name ="submit" value="submit">Kirim</button></a>
         </form>
         <a href="pendaftaran.html"><button class="bBtn">Kembali</button></a>
