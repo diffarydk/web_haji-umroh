@@ -12,6 +12,17 @@ $id_users = $_SESSION['id_users'];
 $query = "SELECT u.username, u.email, f.nama_lengkap, f.nik FROM users u JOIN formulir f ON u.id_users = f.id_users WHERE u.id_users='$id_users' LIMIT 1";
 $result = mysqli_query($conn, $query);
 $user = mysqli_fetch_assoc($result);
+
+// proses pencarian profil berdasarkan nik
+if (isset($_GET['search'])) {
+  $search = $_GET['search'];
+  $query = "SELECT * FROM formulir WHERE nik LIKE '%$search%'";
+} else {
+  $query = "SELECT nik,nama_lengkap FROM formulir";
+}
+
+$result = mysqli_query($conn, $query);
+$profiles = mysqli_fetch_all($result, MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,36 +44,27 @@ $user = mysqli_fetch_assoc($result);
                 <div class="search-container">
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit"><i class="uil uil-search"></i></button>
-                </div>
-                <div class="block block-1">
-                  <p><?php echo $user['nik']; ?></p>
-                  <p><?php echo $user['nama_lengkap']; ?></p>
-                   <a href="#">
-                      <button class="tnm tnm-1">
-                        <p>Cek Data Jamaah</p>
-                      </button>
-                  </a>
-                  <a href="#">
-                    <button class="tnm tnm-2">
-                      <p>Cetak</p>
-                    </button>
-                  </a>
-                </div>
-                <br><br>
-                <div class="block block-3">
-                  <p><?php echo $user['nik']; ?></p>
-                  <p><?php echo $user['nama_lengkap']; ?></p>
-                   <a href="#">
-                      <button class="tnm tnm-1">
-                        <p>Cek Data Jamaah</p>
-                      </button>
-                  </a>
-                  <a href="#">
-                    <button class="tnm tnm-2">
-                      <p>Cetak</p>
-                    </button>
-                  </a>
-                </div>
+                </div><?php
+for ($i=0; $i < count($profiles); $i++) { 
+    $profile = $profiles[$i];
+?>
+    <div class="parent-element">
+        <div class="block">
+            <p><?php echo $profile['nik']; ?></p>
+            <p><?php echo $profile['nama_lengkap']; ?></p>
+            <a href="#">
+                <button class="tnm tnm-1">
+                    <p>Cek Data Jamaah</p>
+                </button>
+            </a>
+            <a href="#">
+                <button class="tnm tnm-2">
+                    <p>Cetak</p>
+                </button>
+            </a>
+        </div>
+    </div>
+<?php } ?><!--
                 <div class="block block-2">
                   <i class="uil uil-lock-alt"></i>
                   <a href="#">
@@ -71,7 +73,7 @@ $user = mysqli_fetch_assoc($result);
                     </button>
                   </a>
                 </div>
-                <br><br>
+                <br><br> -->
         <nav class="sidebar">
           <a href="profile.html"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../index.html"></a>  
             <ul class="nav-list">
@@ -93,5 +95,14 @@ $user = mysqli_fetch_assoc($result);
     </div>
 </main>
     <script src="../../core/script/script.js"></script>
+    <script>
+      const blocks = document.querySelectorAll('.block');
+let topValue = 0;
+
+blocks.forEach(block => {
+  block.style.top = `${topValue}px`;
+  topValue += 100; // increase topValue by 100px for the next block
+});
+    </script>
 </body>
 </html>

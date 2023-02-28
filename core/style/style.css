@@ -1026,14 +1026,21 @@ img{
 .search-container button:hover {
   background: #ccc;
 }
+.parent-element {
+  position: relative;
+  top: 150px;
+}
 .block{
   position: absolute;
   width: 1090px;
   height: 75px;
-
   background: #FFFFFF;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+  top: 0; /* top value of 0 will be overridden by the JavaScript code below */
+}
+.block + .block {
+  top: 100px;
 }
 .block p {
   position: absolute;
