@@ -2,13 +2,12 @@
 session_start();
 require_once "../connection.php";
 class User_model extends Database {
-    private $conn;
     private $username;
     private $password;
 
     public function __construct($username, $password) {
-        $database = new Database();
-        $this->conn = $database->getConnection();
+        $db = new Database;
+        $this->conn = $db->conn;
         $this->username = $username;
         $this->password = $password;
     }

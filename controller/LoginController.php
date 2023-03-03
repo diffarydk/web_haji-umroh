@@ -21,10 +21,10 @@ if ($result) {
         header('location: ../index.php');
         exit();
     } elseif ($_SESSION['level'] == 'admin') {
-        header("location: ../views/admin.html");
+        header("location: ../display/admin/welcome.html");
         exit();
     }
 } else {
-    echo "<script>alert('Username atau password salah');window.location='../views/login.html';</script>";
+    echo "<script>alert('Username atau password salah');window.location='../display/user/login.php';</script>";
     exit();
 }

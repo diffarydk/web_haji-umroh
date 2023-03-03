@@ -10,12 +10,12 @@ fetch(`https://diffarydk.github.io/api-wilayah-indonesia/api/provinces.json`)
       optionProv.selected = true;
       provselect.appendChild(optionProv);
 
-  data.forEach(p => {
-    const optionProv = document.createElement("option");
-    optionProv.value = p.id;
-    optionProv.text = p.name;
-    provselect.appendChild(optionProv);
-  });
+      data.forEach(p => {
+        const optionProv = document.createElement("option");
+        optionProv.value = p.name;
+        optionProv.text = p.name;
+        provselect.appendChild(optionProv);
+      });
 });
   const selectProvinsi = document.getElementById('provinsi');
 

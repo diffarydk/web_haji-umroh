@@ -1,14 +1,13 @@
 <?php 
 require_once "../connection.php";
   class User extends Database {
-    private $conn;
     private $username;
     private $password;
     private $email;
 
     public function __construct($username, $password, $email) {
-        $database = new Database();
-        $this->conn = $database->getConnection();
+      $db = new Database;
+      $this->conn = $db->conn;
         $this->username = htmlspecialchars(strip_tags($username));
         $this->email = htmlspecialchars(strip_tags($email));
         $this->password = password_hash(htmlspecialchars(strip_tags($password)), PASSWORD_DEFAULT);
