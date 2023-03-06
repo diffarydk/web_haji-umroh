@@ -23,12 +23,12 @@ session_start();
             <h3>Program :</h3>
             <span class="note-1">*</span>
             <label for="reguler">
-            <input type="radio" id="reguler" name="program" value="1">Umroh Reguler</label>
+            <input type="radio" id="reguler" name="program" value="1" required>Umroh Reguler</label>
             <label for="plus">
             <input type="radio" id="plus" name="program" value="2">Umroh Plus</label>
             <br>
             <label for="quad">
-            <input type="radio" id="quad" name="kamar" value="4">Quad</label>
+            <input type="radio" id="quad" name="kamar" value="4" required>Quad</label>
             <span class="note-1">*</span>
             <label for="triple">
             <input type="radio" id="triple" name="kamar" value="3">Triple</label>
@@ -112,7 +112,7 @@ session_start();
               <h3>Jenis Kelamin :</h3>
               <span class="note-1">*</span>
               <label for="pria">
-              <input type="radio" id="pria" name="jenis_kelamin" value="1">Pria</label>
+              <input type="radio" id="pria" name="jenis_kelamin" value="1" required>Pria</label>
               <label for="wanita">
               <input type="radio" id="wanita" name="jenis_kelamin" value="2">Wanita</label>
               <br><br>
@@ -154,15 +154,15 @@ session_start();
                 <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
-                <label for="dataOption" required></label>
-                <select id="kec" name="kecamatan"></select>
+                <label for="dataOption" ></label>
+                <select id="kec" name="kecamatan" required></select>
                 <option value=""></option>
                 </div>
                 <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
-                <label for="dataOption"required></label>
-                <select id="kel" name="kelurahan" ></select>
+                <label for="dataOption"></label>
+                <select id="kel" name="kelurahan" required></select>
                 <option value=""></option>
               </div>
               <span class="note-1">*</span>
@@ -206,7 +206,7 @@ session_start();
                       <h3>Pendidikan Terakhir :</h3>
                       <span class="note-1">*</span>
                       <label for="sd">
-                      <input type="radio" id="sd" name="pendidikan_terakhir" value="1">SD/Sederajat</label>
+                      <input type="radio" id="sd" name="pendidikan_terakhir" value="1" required>SD/Sederajat</label>
                       <label for="smp">
                       <input type="radio" id="smp" name="pendidikan_terakhir" value="2">SMP/Sederajat</label>
                       <label for="sma">
@@ -298,7 +298,7 @@ session_start();
                                   <label for="file"></label>
                                   <span>Foto 3X4 :</span>
                                   <span class="note-1">*</span>
-                                  <input type="file" id="file" name="foto" class="file-input">
+                                  <input type="file" id="file" name="foto" class="file-input" required>
                                       <a href="table_jadwal.html"><button href="table_jadwal.html" class="kirim" type="submit"  name ="submit" value="submit">Kirim</button></a>
         </form>
         <a href="pendaftaran.html"><button class="bBtn">Kembali</button></a>

@@ -19,7 +19,18 @@ session_start();
     }
     $user = mysqli_fetch_assoc($result);
   }
-
+  $id_formulir = $_GET['id_formulir'] ?? null; // set default value to null
+  $id_users = $_SESSION['id_users'];
+  $row = null;
+  if(isset($id_formulir)) {
+  $query = "SELECT provinsi, kota_kabupaten, kecamatan, kelurahan FROM formulir WHERE id_formulir = '$id_formulir' AND id_users = $id_users";
+  $result = mysqli_query($conn, $query);
+  if (!$result) {
+    printf("Error: %s\n", mysqli_error($conn));
+    exit();
+  }
+  $row = mysqli_fetch_assoc($result);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,45 +138,37 @@ session_start();
               </div>
               <span class="note-1">*</span>
               <br>
-              <div class="goldar">
-    <label for="dataOption"></label>
-    <select id="dataOption" name="provinsi" required>
-        <option value=""></option>
-        <?php 
-        // Pastikan variabel $provinces sudah terisi dengan data provinsi sebelum di-loop
-        if (!empty($provinces)) {
-            // Loop untuk menampilkan data provinsi
-            foreach ($provinces as $prov) {
-                $selected = ($user !== null && $user['provinsi'] === $prov['name']) ? 'selected' : '';
-                echo '<option value="' . $prov['name'] . '" ' . $selected . '>' . $prov['name'] . '</option>';
-            }
-        } else {
-            // Tampilkan pesan jika data provinsi tidak tersedia
-            echo '<option disabled>Data provinsi tidak tersedia</option>';
-        }
-        ?>
-    </select>
-</div>
+               <div class="goldar">
+                <label for="dataOption"></label>
+                <select id="provinsi" name="provinsi" disabled>
+                <option value="<?php echo $row['provinsi']; ?>">
+                <?php echo $row['provinsi']; ?>
+                </option>
+                </select>
+                </div>
                 <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
                 <label for="dataOption"></label>
-                <select id="kota" name="kota_kabupaten" required></select>
-                <option value=""></option>
+                <select id="kota" name="kota_kabupaten" disabled>
+                <option value=""><?php echo $row['kota_kabupaten']; ?></option>
+                </select>
                 </div>
                 <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
-                <label for="dataOption" required></label>
-                <select id="kec" name="kecamatan"></select>
-                <option value=""></option>
+                <label for="dataOption" ></label>
+                <select id="kec" name="kecamatan" disabled>
+                <option value=""><?php echo $row['kecamatan']; ?></option>
+                </select>
                 </div>
                 <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
-                <label for="dataOption"required></label>
-                <select id="kel" name="kelurahan" ></select>
-                <option value=""></option>
+                <label for="dataOption"></label>
+                <select id="kel" name="kelurahan" disabled>
+                <option value=""><?php echo $row['kelurahan']; ?></option>
+                </select>
               </div>
               <span class="note-1">*</span>
               <br>
@@ -279,10 +282,10 @@ session_start();
                                   <label for="file"></label>
                                   <span>Foto 3X4 :</span>
                                   <span class="note-1">*</span>
-                                  <input type="file" id="file" name="foto" class="file-input">
-                                      <a href="table_jadwal.html"><button href="table_jadwal.html" class="kirim" type="submit"  name ="submit" value="submit">Kirim</button></a>
+                                  <input type="file" id="file" name="foto" class="file-input" disabled>
+                                      <!-- <a href="table_jadwal.html"><button href="" class="kirim" type="submit"  name ="submit" value="submit"></button></a> -->
         </form>
-        <a href="pendaftaran.html"><button class="bBtn">Kembali</button></a>
+        <a href="profile.php"><button class="bBtn">Kembali</button></a>
         <nav class="sidebar">
           <a href="profile.php"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../../index.php"></a>  
             <ul class="nav-list">
@@ -304,6 +307,5 @@ session_start();
     </div>
 </main>
 <script src="../../core/script/script.js"></script>
-<script src="../../core/script/api/wilayah.js"></script>
 </body>
 </html>
