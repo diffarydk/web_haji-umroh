@@ -26,7 +26,11 @@ class user extends Database
     {
         if (isset($_SESSION['id_users'])) {
             $id_users = $_SESSION['id_users'];
-            $profilequery = "SELECT u.username, u.email, f.id_formulir, f.nama_lengkap, f.nik FROM users u JOIN formulir f ON u.id_users = f.id_users WHERE u.id_users='$id_users'";
+            $profilequery = "SELECT u.username, u.email, f.id_formulir, f.nama_lengkap, f.nik, f.time_stamp
+                             FROM users u 
+                             JOIN formulir f ON u.id_users = f.id_users 
+                             WHERE u.id_users='$id_users'
+                             ORDER BY f.time_stamp DESC";
             $result = $this->conn->query($profilequery);
             $profiles = $this->conn->query($profilequery);
             if($result->num_rows > 0 && $profiles->num_rows > 0){
@@ -36,4 +40,5 @@ class user extends Database
             }
         }
     }
+    
 }

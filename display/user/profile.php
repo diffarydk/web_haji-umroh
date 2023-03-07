@@ -49,6 +49,7 @@ if(!isset($_SESSION['id_users'])) {
         <?php
     $users = new user();
     $result = $users->profile();
+    $id_formulir = $_GET['id_formulir'] ?? null;
     if($result)
     {
         $profiles = $result[1];
@@ -64,7 +65,7 @@ if(!isset($_SESSION['id_users'])) {
                     <p>Cek Data Jamaah</p>
                 </button>
             </a>
-            <a href="#">
+            <a href="../../input/generate.php?id_formulir=<?php echo $profile['id_formulir']; ?>&id_users=<?php echo $_SESSION['id_users']; ?>" download="formulir_<?php echo $profile['id_formulir']; ?>.pdf">
                 <button class="tnm tnm-2">
                     <p>Cetak</p>
                 </button>

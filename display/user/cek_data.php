@@ -1,36 +1,11 @@
 <?php
 session_start();
+include('../../connection.php');
+include_once('../../input/DataFormulir.php');
     if(!isset($_SESSION['id_users'])) {
       echo "<script>alert('Anda harus login terlebih dahulu');window.location='../user/login.php';</script>";
       exit;
   }
-  $conn = mysqli_connect("localhost", "root", "", "db_haji_umroh");
-
-  // mengambil data profil pengguna dari database
-  $id_formulir = $_GET['id_formulir'] ?? null; // set default value to null
-  $id_users = $_SESSION['id_users'];
-  $user = null; // set default value to null
-  if(isset($id_formulir)) {
-    $query = "SELECT * FROM formulir WHERE id_formulir = '$id_formulir' AND id_users = $id_users";
-    $result = mysqli_query($conn, $query);
-    if (!$result) {
-      printf("Error: %s\n", mysqli_error($conn));
-      exit();
-    }
-    $user = mysqli_fetch_assoc($result);
-  }
-  $id_formulir = $_GET['id_formulir'] ?? null; // set default value to null
-  $id_users = $_SESSION['id_users'];
-  $row = null;
-  if(isset($id_formulir)) {
-  $query = "SELECT provinsi, kota_kabupaten, kecamatan, kelurahan FROM formulir WHERE id_formulir = '$id_formulir' AND id_users = $id_users";
-  $result = mysqli_query($conn, $query);
-  if (!$result) {
-    printf("Error: %s\n", mysqli_error($conn));
-    exit();
-  }
-  $row = mysqli_fetch_assoc($result);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +21,13 @@ session_start();
     <div class="hContainer daftar">
         <h1 class="heading">Formulir Pendaftaran</h1>
         <form class="form" action="" method="post" enctype="multipart/form-data">
-            
+        <?php 
+        $formulir = new Formulir();
+        $id_formulir = $_GET['id_formulir'] ?? null;
+        $user = $formulir->getData($id_formulir);
+
+if ($user) {
+?>
             <h3>Program :</h3> <p><?php echo strtoupper($user['program'] ?? ''); ?></p>
             <p><?php echo strtoupper($user['kamar'] ?? ''); ?></p>
             <br>
@@ -138,6 +119,12 @@ session_start();
               </div>
               <span class="note-1">*</span>
               <br>
+              <?php 
+$formulir = new Formulir();
+$id_formulir = $_GET['id_formulir'] ?? null;
+$row = $formulir->getWilayah($id_formulir);;
+if ($row) {
+?>
                <div class="goldar">
                 <label for="dataOption"></label>
                 <select id="provinsi" name="provinsi" disabled>
@@ -169,6 +156,10 @@ session_start();
                 <select id="kel" name="kelurahan" disabled>
                 <option value=""><?php echo $row['kelurahan']; ?></option>
                 </select>
+                <?php
+                                } else {
+    echo "No Record Found";
+  } ?>
               </div>
               <span class="note-1">*</span>
               <br>
@@ -282,9 +273,13 @@ session_start();
                                   <label for="file"></label>
                                   <span>Foto 3X4 :</span>
                                   <span class="note-1">*</span>
-                                  <input type="file" id="file" name="foto" class="file-input" disabled>
+                                  <input type="file" id="file" name="foto" class="file-input" disabled> 
                                       <!-- <a href="table_jadwal.html"><button href="" class="kirim" type="submit"  name ="submit" value="submit"></button></a> -->
-        </form>
+                                      <?php
+                                } else {
+    echo "No Record Found";
+  } ?>
+                                    </form>
         <a href="profile.php"><button class="bBtn">Kembali</button></a>
         <nav class="sidebar">
           <a href="profile.php"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../../index.php"></a>  
