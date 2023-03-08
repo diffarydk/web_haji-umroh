@@ -28,7 +28,7 @@ if($_SESSION['level'] = "") {
                 <li class="list-item"><a class="fa" href="display/user/pendaftaran.html">Daftar Haji & Umroh</a></li>
                 <li class="list-item"><a class="fa" href="display/user/panduan.html">Panduan</a></li>
                 <li class="list-item"><a class="fa tentang-kami" href="display/user/tentang-kami.html">Tentang Kami</a></li>
-                <li class="list-item"><a class="logout" href="./controller/logout.php">Logout</a></li>
+                <li class="list-item"><a id="logout-link" class="logout" href="./controller/logout.php">Logout</a></li>
               </ul>
         </nav>
         <nav class="wrapper">
@@ -40,5 +40,13 @@ if($_SESSION['level'] = "") {
     </div>
 </main>
     <script src="core/script/script.js"></script>
+    <script>
+    document.getElementById('logout-link').addEventListener('click', function(event) {
+        event.preventDefault(); // prevent the link from navigating to the logout page
+        if (confirm("Apakah anda yakin untuk log out?")) {
+            window.location.href = this.href; // navigate to the logout page
+        }
+    });
+</script>
 </body>
 </html>

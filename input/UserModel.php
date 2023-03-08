@@ -4,13 +4,15 @@ require_once "../connection.php";
     private $username;
     private $password;
     private $email;
+    private $time;
 
-    public function __construct($username, $password, $email) {
+    public function __construct($username, $password, $email, $time) {
       $db = new Database;
       $this->conn = $db->conn;
         $this->username = htmlspecialchars(strip_tags($username));
         $this->email = htmlspecialchars(strip_tags($email));
         $this->password = password_hash(htmlspecialchars(strip_tags($password)), PASSWORD_DEFAULT);
+        $this->time = $time;
         }
 
     public function register() {
@@ -37,13 +39,23 @@ require_once "../connection.php";
         $user = mysqli_fetch_assoc($result);
       }
     
-      $query = "INSERT INTO users VALUES ('$id_users', '$this->username', '$this->password', '$this->email','users','')";
+      $query = "INSERT INTO users (id_users, username, password, email, status, time) VALUES ('$id_users', '$this->username', '$this->password', '$this->email','users', '$this->time')";
     
       if (mysqli_query($this->conn, $query)) {
         return true;
       } else {
         return false;
       }
-    }
+        }
+     
+        function getTimes($waktu, $tanggal) {
+          // Konversi input waktu dan tanggal ke format yang dapat di-parse oleh fungsi strtotime
+          $datetimeStr = $tanggal . ' ' . $waktu;
+          // Parse string datetime ke UNIX timestamp
+          $time = strtotime($datetimeStr);
+          return $time;
+        }
+       
+        
   }
 ?>

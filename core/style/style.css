@@ -1022,10 +1022,6 @@ img{
 }
 .pContainer i{
 }
-.pContainer .search-container {
-  float: right;
-}
-
 .pContainer input[type=text] {
   position: relative;
   padding: 6px;
@@ -1036,24 +1032,6 @@ img{
   border: 0.5px solid #000000;
   border-radius: 17px;
   z-index: 0;
-}
-
-.search-container button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 82px;
-  margin-right: 87px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-  border-radius: 17px;
-    cursor: pointer;
-    position: relative;
-    z-index: 0;
-}
-.search-container button:hover {
-  background: #ccc;
 }
 .parent-element {
   position: relative;
@@ -1246,6 +1224,17 @@ img{
   width: 312px;
   height: 32px;
   background: #247372;
+  border-radius: 6px;
+  left: 388px;
+  border: none;
+  cursor: pointer;
+  top: 22px;
+}
+.nmt-1{
+  position: absolute;
+  width: 312px;
+  height: 32px;
+  background: #FF7315;
   border-radius: 6px;
   left: 388px;
   border: none;

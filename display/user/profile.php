@@ -40,12 +40,6 @@ if(!isset($_SESSION['id_users'])) {
                                             echo "No Record Found";
                                         }
                                     ?>
-        <form action="" method="GET">
-          <div class="search-container">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="uil uil-search"></i></button>
-          </div>
-        </form>
         <?php
     $users = new user();
     $result = $users->profile();
@@ -56,6 +50,26 @@ if(!isset($_SESSION['id_users'])) {
         for ($i = 0; $i < $profiles->num_rows; $i++) {
           $profile = $profiles->fetch_assoc();
 ?>
+     <div class="parent-element">
+            <?php if ($profile['status'] == "belum") { ?>
+                <div class="block">
+                    <i class="uil uil-lock-alt"></i>
+                    <a href="#">
+                        <button class="tns">
+                            <p>Menunggu Konfirmasi Pembayaran</p>
+                        </button>
+                    </a>
+                </div>
+                <?php } else if ($profile['status'] == "ditolak") { ?>
+    <div class="block">
+        <a href="kontak.html">
+            <button class="tns nmt-1">
+                <p>Pembayaran Ditolak</p>
+            </button>
+        </a>
+    </div>
+    <?php } else { ?>
+     </div>
     <div class="parent-element">
         <div class="block">
             <p><?php echo $profile['nik']; ?></p>
@@ -71,13 +85,13 @@ if(!isset($_SESSION['id_users'])) {
                 </button>
             </a>
         </div>
-    </div>
-<?php
-        }
+        <?php } ?>
+        </div>
+        <?php
     }
-?>
+} ?>
       </div> <!--
-                <div class="block block-2">
+                <div class="block">
                   <i class="uil uil-lock-alt"></i>
                   <a href="#">
                     <button class="tns">

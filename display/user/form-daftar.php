@@ -178,7 +178,7 @@ session_start();
                 <br><br>
                 <div class="field field_v1">
                   <label for="email" class="ha-screen-reader">Email</label><br>
-                  <input type="email" name="email" id="email" class="field__input" placeholder="Masukkan Email anda" required>
+                  <input type="email" name="email" id="email" class="field__input" placeholder="Masukkan Email anda" onchange="this.value = this.value.toLowerCase();" required>
                   <span class="field__label-wrap" aria-hidden="true">
                       <span class="field__label">Email</span>
                     </span>
@@ -298,7 +298,11 @@ session_start();
                                   <label for="file"></label>
                                   <span>Foto 3X4 :</span>
                                   <span class="note-1">*</span>
-                                  <input type="file" id="file" name="foto" class="file-input" required>
+                                  <input type="file" id="file" name="foto" class="file-input" accept="image/*" 
+                                  <?php if ($user['foto']): ?>
+  <p>Current photo:</p>
+  <img src="../../../core/img/<?php echo $user['foto']; ?>" alt="Current photo">
+<?php endif; ?>required>
                                       <a href="table_jadwal.html"><button href="table_jadwal.html" class="kirim" type="submit"  name ="submit" value="submit">Kirim</button></a>
         </form>
         <a href="pendaftaran.html"><button class="bBtn">Kembali</button></a>

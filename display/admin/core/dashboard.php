@@ -1,3 +1,8 @@
+<?php
+include('../../../connection.php');
+include_once('../../../input/DashboardModel.php');
+include_once('../../../input/ProfileModel.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,41 +18,26 @@
     <div class="hContainer profile">
         <div class="pContainer">
             <div class="horizontal"></div>
-                <h1>Pembayaran</h1>
-                <a href="dashboard_user.html">
-                    <button class="tnm tnm-5">
-                      <p>Data Jamaah</p>
-                    </button>
-                </a>
-                <div class="block block-1">
-                  <p>123456778910</p>
-                  <p>diffary dzikri khattab</p>
-                  <a href="#">
-                    <button class="tnm tnm-3">
-                      <p>Cetak</p>
-                    </button>
-                   <a href="konfirmasi_pembayaran-edit.html">
-                      <button class="tnm tnm-1">
-                        <p>Cek Pembayaran</p>
-                      </button>
-                  </a>
-                  <a href="#">
-                    <button class="tnm tnm-2">
-                      <p>Hapus</p>
-                    </button>
-                  </a>
-                </div>
-                <br><br>
-                <div class="block block-4">
-                    <p>123456778910</p>
-                    <p>diffary dzikri khattab</p>
-                    <a href="#">
-                      <button class="tnm tnm-3">
-                        <p>Cetak</p>
-                      </button>
-                     <a href="konfirmasi_pembayaran-edit.html">
+            <h1>Dashboard Admin</h1>
+            <?php
+                                        $users = new admin();
+                                        $id_users = $_GET['id_users'] ?? null; 
+                                        $result = $users->getData();
+                                        if($result)
+                                        {
+                                            foreach($result as $row)
+                                            {
+                                                ?>
+
+                <div class="parent-element">
+                  <div class="block">
+                    <div class="hb">
+                        <h3><?= $row['username']; ?></h3>
+                        <p><?= $row['email']; ?></p>
+                    </div>
+                     <a href="dashboard_user.php?id_users=<?php echo $row['id_users']; ?>">
                         <button class="tnm tnm-1">
-                          <p>Cek Pembayaran</p>
+                          <p>Data/Pembayaran</p>
                         </button>
                     </a>
                     <a href="#">
@@ -55,11 +45,19 @@
                         <p>Hapus</p>
                       </button>
                     </a>
-                  </div>
-                  <br><br>
-        </div>
+                </div>
+                </div> 
+                <?php
+                                            }
+                                        }
+                                        else
+                                        {
+                                            echo "No Record Found";
+                                        }
+                                    ?> 
+
         <nav class="sidebar">
-          <img class="user-logo" src="../../../core/asset/icon-user.png" alt="user-logo" href="../welcome.html">
+          <img class="user-logo" src="../../../core/asset/icon-user.png" alt="user-logo" href="../welcome.html"></a>  
             <ul class="nav-list">
                 <li class="list-item"><a class="login" href="login.html">Login/Daftar</a></li>
                 <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>
@@ -79,5 +77,14 @@
     </div>
 </main>
     <script src="../../../core/script/script.js"></script>
+    <script>
+     const blocks = document.querySelectorAll('.block');
+let topValue = 0;
+
+blocks.forEach(block => {
+  block.style.top = `${topValue}px`;
+  topValue += 100; // increase topValue by 100px for the next block
+});
+</script>
 </body>
 </html>
