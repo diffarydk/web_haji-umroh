@@ -47,41 +47,59 @@ include_once('../../../input/ProfileModel.php');
                       <button class="tnm tnm-7">
                         <p>Kembali</p>
                       </button>
-                  </a>
+                  </a>           
                   <?php
-    $users = new admin();
-    $id_formulir = $_GET['id_formulir'] ?? null;
-    $id_users = $_GET['id_users'] ?? null;
-    $result = $users->profile();
-    if($result)
+$users = new admin();
+$id_formulir = $_GET['id_formulir'] ?? null;
+$id_users = $_GET['id_users'] ?? null;
+$id_formulir = $_GET['id_formulir'] ?? null;
+$id_users = $_GET['id_users'] ?? null;
+if (isset($_GET['delete']) && isset($_GET['id_formulir'])) {
+    $id_formulir = $_GET['id_formulir'];
+    $delete = $users->deleteFormulir($id_users, $id_formulir);
+    if ($delete) {
+        // Redirect to the same page after deleting the user
+        header("Location: dashboard_user.php?id_users=$id_users");
+        exit;
+    } else {
+        // Handle the case where the delete operation failed
+    }
+}
+$result = $users->profile();
+if($result)
+{
+    $profiles = $result[1];
+    if($profiles)
     {
-        $profiles = $result[1];
-        for ($i = 0; $i < $profiles->num_rows; $i++) {
-          $profile = $profiles->fetch_assoc();
+        foreach($profiles as $profile)
+        {
 ?>
-                  <div class="parent-element">
-                <div class="block">
-                  <p><?php echo $profile['nik']; ?></p>
-                  <p><?php echo $profile['nama_lengkap']; ?></p>
-                  <a href="#">
+        <div class="parent-element">
+            <div class="block">
+                <p><?php echo $profile['nik']; ?></p>
+                <p><?php echo $profile['nama_lengkap']; ?></p>
+                <a href="../../../input/adminGenerate.php?id_formulir=<?php echo $profile['id_formulir']; ?>&id_users=<?php echo $_GET['id_users']; ?>" download="formulir_<?php echo $profile['id_formulir']; ?>.pdf">
                     <button class="tnm tnm-3">
-                      <p>Cetak</p>
+                        <p>Cetak</p>
                     </button>
-                   <a href="form-daftar-edit.php?id_formulir=<?php echo $profile['id_formulir']; ?>&id_users=<?php echo $_GET['id_users']; ?>">
-                      <button class="tnm tnm-1">
+                </a>
+                <a href="form-daftar-edit.php?id_formulir=<?php echo $profile['id_formulir']; ?>&id_users=<?php echo $_GET['id_users']; ?>">
+                    <button class="tnm tnm-1">
                         <p>Cek Data Jamaah</p>
-                      </button>
-                  </a>
-                  <a href="#">
-                    <button class="tnm tnm-2">
-                      <p>Hapus</p>
                     </button>
-                  </a>
-                </div>
-                </div>
-                <?php }
-                } ?>
-
+                </a>
+                <a href="dashboard_user.php?id_users=<?php echo $_GET['id_users']; ?>&id_formulir=<?php echo $profile['id_formulir']; ?>&delete=<?php echo $profile['id_formulir']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus?')">
+                    <button class="tnm tnm-2">
+                        <p>Hapus</p>
+                    </button>
+                </a>
+            </div>
+        </div>
+<?php
+        }
+    } 
+}
+?>
         </div>
         <nav class="sidebar">
           <img class="user-logo" src="../../../core/asset/icon-user.png" alt="user-logo" href="../welcome.html">

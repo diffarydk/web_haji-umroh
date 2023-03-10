@@ -3,13 +3,11 @@ require_once '../connection.php';
 require_once 'DataPdf.php';
 require '../fpdf185/fpdf.php';
 
-$pdf_template = '../template_pdf/FormulirUmrah.png';
-session_start();
-if (isset($_GET['id_formulir'])) {
+$pdf_template = '../template_pdf/FormulirUmrah.png';if (isset($_GET['id_users'])) {
     $formulir = new Form();
     $id_formulir = $_GET['id_formulir'];
-    $id_users = $_SESSION['id_users'];
-    $user = $formulir->getForm($id_formulir, $id_users);
+    $id_users = $_GET['id_users'];
+    $user = $formulir->getInfo($id_formulir, $id_users);
 
     if ($user) {
         $pdf = new FPDF();
@@ -56,4 +54,3 @@ if (isset($_GET['id_formulir'])) {
 } else {
     echo "Missing id_formulir parameter";
 }
-?>

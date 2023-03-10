@@ -141,28 +141,28 @@ session_start();
               <br>
               <div class="goldar">
                 <label for="dataOption"></label>
-                <select id="provinsi" name="provinsi" required></select>
+                <select id="provinsi" name="provinsi" ></select>
                 <option value=""></option>
                 </div>
                 <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
                 <label for="dataOption"></label>
-                <select id="kota" name="kota_kabupaten" required></select>
+                <select id="kota" name="kota_kabupaten" ></select>
                 <option value=""></option>
                 </div>
                 <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
                 <label for="dataOption" ></label>
-                <select id="kec" name="kecamatan" required></select>
+                <select id="kec" name="kecamatan" ></select>
                 <option value=""></option>
                 </div>
                 <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
                 <label for="dataOption"></label>
-                <select id="kel" name="kelurahan" required></select>
+                <select id="kel" name="kelurahan" ></select>
                 <option value=""></option>
               </div>
               <span class="note-1">*</span>
@@ -298,11 +298,7 @@ session_start();
                                   <label for="file"></label>
                                   <span>Foto 3X4 :</span>
                                   <span class="note-1">*</span>
-                                  <input type="file" id="file" name="foto" class="file-input" accept="image/*" 
-                                  <?php if ($user['foto']): ?>
-  <p>Current photo:</p>
-  <img src="../../../core/img/<?php echo $user['foto']; ?>" alt="Current photo">
-<?php endif; ?>required>
+                                  <input type="file" id="file" name="foto" class="file-input" accept="image/*">
                                       <a href="table_jadwal.html"><button href="table_jadwal.html" class="kirim" type="submit"  name ="submit" value="submit">Kirim</button></a>
         </form>
         <a href="pendaftaran.html"><button class="bBtn">Kembali</button></a>

@@ -22,6 +22,15 @@ include_once('../../../input/ProfileModel.php');
             <?php
                                         $users = new admin();
                                         $id_users = $_GET['id_users'] ?? null; 
+                                        if (isset($_GET['delete'])) {
+                                          $id_users = $_GET['delete'];
+                                          $delete = $users->deleteUser($id_users);
+                                      
+                                          // Redirect to the same page after deleting the user
+                                          header("Location: dashboard.php");
+                                          exit;
+                                      }
+                                      
                                         $result = $users->getData();
                                         if($result)
                                         {
@@ -40,7 +49,7 @@ include_once('../../../input/ProfileModel.php');
                           <p>Data/Pembayaran</p>
                         </button>
                     </a>
-                    <a href="#">
+                    <a href="dashboard.php?delete=<?= $row['id_users']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus?')">
                       <button class="tnm tnm-2">
                         <p>Hapus</p>
                       </button>
@@ -48,6 +57,8 @@ include_once('../../../input/ProfileModel.php');
                 </div>
                 </div> 
                 <?php
+                
+              
                                             }
                                         }
                                         else
@@ -55,7 +66,9 @@ include_once('../../../input/ProfileModel.php');
                                             echo "No Record Found";
                                         }
                                     ?> 
-
+        </div>
+    </div>
+    
         <nav class="sidebar">
           <img class="user-logo" src="../../../core/asset/icon-user.png" alt="user-logo" href="../welcome.html"></a>  
             <ul class="nav-list">

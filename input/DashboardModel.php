@@ -9,7 +9,7 @@ class admin extends Database {
     
     public function getData()
     {
-        $userQuery = "SELECT id_users, username, email FROM users  ORDER BY time DESC";
+      $userQuery = "SELECT u.id_users, u.username, u.email, MAX(f.time_stamp) AS last_time_stamp FROM users u LEFT JOIN formulir f ON u.id_users = f.id_users GROUP BY u.id_users ORDER BY last_time_stamp DESC";
         $result = $this->conn->query($userQuery);
         if($result->num_rows > 0){
             return $result; 
@@ -64,4 +64,29 @@ class admin extends Database {
         }
         return false;
       }
+      public function deleteFormulir($id_users, $id_formulir) {
+        $query = "DELETE FROM formulir WHERE id_users = ? AND id_formulir = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param('si', $id_users, $id_formulir);
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function deleteUser($id_users) {
+      $query = "DELETE FROM users WHERE id_users = ?";
+      $stmt = $this->conn->prepare($query);
+      $stmt->bind_param('i', $id_users);
+      if ($stmt->execute()) {
+          $query = "DELETE FROM formulir WHERE id_users = ?";
+          $stmt = $this->conn->prepare($query);
+          $stmt->bind_param('i', $id_users);
+          $stmt->execute();
+          return true;
+      } else {
+          return false;
+      }
+  }
+  
 }
