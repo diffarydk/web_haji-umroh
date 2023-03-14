@@ -54,7 +54,7 @@ if(!isset($_SESSION['id_users'])) {
             <?php if ($profile['status'] == "belum") { ?>
                 <div class="block">
                     <i class="uil uil-lock-alt"></i>
-                    <a href="#">
+                    <a href="kontak.html">
                         <button class="tns">
                             <p>Menunggu Konfirmasi Pembayaran</p>
                         </button>

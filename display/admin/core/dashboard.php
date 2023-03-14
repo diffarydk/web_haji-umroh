@@ -34,11 +34,26 @@ include_once('../../../input/ProfileModel.php');
                                         $result = $users->getData();
                                         if($result)
                                         {
-                                            foreach($result as $row)
-                                            {
-                                                ?>
-
+                                            foreach($result as $row){
+                                            if($row['level'] === 'admin') {
+                                            ?>
                 <div class="parent-element">
+                  <div class="block">
+                    <div class="hb">
+                        <h3><?= $row['username']; ?></h3>
+                        <p><?= $row['email']; ?></p>
+                    </div>
+                     <a href="dashboard_user.php?id_users=<?php echo $row['id_users']; ?>">
+                        <button class="tnm tnm-4">
+                          <p>Data/Pembayaran</p>
+                        </button>
+                    </a>
+                    </div>
+    </div>
+                    <?php
+        } else { 
+          ?>
+          <div class="parent-element">
                   <div class="block">
                     <div class="hb">
                         <h3><?= $row['username']; ?></h3>
@@ -55,20 +70,15 @@ include_once('../../../input/ProfileModel.php');
                       </button>
                     </a>
                 </div>
-                </div> 
+                </div>
+                <a href="table_jadwal_admin.php"><button class="tnm tnm-5"><p>Table Jadwal</p></button></a> 
                 <?php
-                
-              
-                                            }
-                                        }
-                                        else
-                                        {
-                                            echo "No Record Found";
-                                        }
+              }
+           }
+        } else {                 
+                  echo "No Record Found";
+                 }
                                     ?> 
-        </div>
-    </div>
-    
         <nav class="sidebar">
           <img class="user-logo" src="../../../core/asset/icon-user.png" alt="user-logo" href="../welcome.html"></a>  
             <ul class="nav-list">

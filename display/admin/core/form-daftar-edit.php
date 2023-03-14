@@ -17,7 +17,9 @@ include_once('../../../input/DashboardModel.php');
     <main>
     <div class="hContainer daftar">
         <h1 class="heading">Formulir Pendaftaran</h1>
-        <form class="form" action="" method="post" enctype="multipart/form-data">
+        <form class="form" action="../../../controller/UpdateController.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id_formulir" value="<?php echo $user['id_formulir'] ?>" readonly>
+        <input type="hidden" name="id_users" value="<?php echo $user['id_users'] ?>" readonly>
         <?php 
         $formulir = new admin();
         $id_formulir = $_GET['id_formulir'] ?? null;
@@ -26,9 +28,22 @@ include_once('../../../input/DashboardModel.php');
 if ($user) {
 ?>
             <h3>Program :</h3> 
-            <p><?php echo strtoupper($user['program'] ?? ''); ?></p>
-            <p><?php echo strtoupper($user['kamar'] ?? ''); ?></p>
-            <br>
+            <div class="goldar-2">
+                <label for="bloodType"></label>
+                <select id="bloodType" name="program" required>
+                <option value="1" <?php if ($user !== null && $user['program'] === 'Umroh Reguler') echo "selected"; ?>>Umroh Reguler</option>
+                <option value="2" <?php if ($user !== null && $user['program'] === 'Umroh Plus') echo "selected"; ?>>Umroh Plus</option>
+                </select>
+              </div>
+              <br>
+              <div class="goldar-2">
+                <label for="bloodType"></label>
+                <select id="bloodType" name="kamar" required>
+                <option value="4" <?php if ($user !== null && $user['kamar'] === 'Quad') echo "selected"; ?>>Quad</option>
+                <option value="3" <?php if ($user !== null && $user['kamar'] === 'Triple') echo "selected"; ?>>Triple</option>
+                <option value="2" <?php if ($user !== null && $user['kamar'] === 'Doule') echo "selected"; ?>>Double</option>
+                </select>
+              </div>
             <div class="field field_v1">
             <label for="nama" class="ha-screen-reader">Nama Lengkap</label><br>
             <input type="text" name="nama" id="nama" class="field__input" placeholder="Isikan nama lengkap anda" value="<?php echo strtoupper($user['nama_lengkap'] ?? ''); ?>" required>
@@ -102,10 +117,16 @@ if ($user) {
               </div>
               <br>
               <h3>Jenis Kelamin :</h3>
-              <p><?php echo strtoupper($user['jenis_kelamin'] ?? ''); ?></p><br>
+              <div class="goldar-3">
+                <label for="bloodType"></label>
+                <select id="bloodType" name="jenis_kelamin" required>
+                <option value="1" <?php if ($user !== null && $user['jenis_kelamin'] === 'Pria') echo "selected"; ?>>Pria</option>
+                <option value="2" <?php if ($user !== null && $user['jenis_kelamin'] === 'Wanita') echo "selected"; ?>>Wanita</option>
+                </select>
+              </div>
               <div class="goldar">
                 <label for="bloodType"></label>
-                <select id="bloodType" name="goldar" required>
+                <select id="bloodType" name="golongan_darah" required>
                 <option value="A" <?php if ($user !== null && $user['golongan_darah'] === 'A') echo "selected"; ?>>A</option>
                 <option value="B" <?php if ($user !== null && $user['golongan_darah'] === 'B') echo "selected"; ?>>B</option>
                 <option value="AB" <?php if ($user !== null && $user['golongan_darah'] === 'AB') echo "selected"; ?>>AB</option>
@@ -128,44 +149,48 @@ if ($user) {
 $id_formulir = $_GET['id_formulir'] ?? null;
 $row = $formulir->getWilayah($id_formulir);;
 if ($row) { ?>
-               <div class="goldar">
-                <label for="dataOption"></label>
-                <select id="provinsi" name="provinsi" required>
-                <option value="<?php echo $row['provinsi']; ?>">
-                <?php echo $row['provinsi']; ?>
-                </option>
-                </select>
-                </div>
-                <span class="note-1">*</span>
-                <br>
-                <div class="goldar">
-                <label for="dataOption"></label>
-                <select id="kota" name="kota_kabupaten" required>
-                <option value=""><?php echo $row['kota_kabupaten']; ?></option>
-                </select>
-                </div>
-                <span class="note-1">*</span>
-                <br>
-                <div class="goldar">
-                <label for="dataOption" ></label>
-                <select id="kec" name="kecamatan" required>
-                <option value=""><?php echo $row['kecamatan']; ?></option>
-                </select>
-                </div>
-                <span class="note-1">*</span>
-                <br>
-                <div class="goldar">
-                <label for="dataOption"></label>
-                <select id="kel" name="kelurahan" required>
-                <option value=""><?php echo $row['kelurahan']; ?></option>
-                </select>
+
+            <div class="field field_v1">
+            <label for="provinsi" class="ha-screen-reader">Provinsi</label><br>
+            <input type="text" name="nama" id="provinsi" class="field__input" placeholder="Isikan Provinsi" value="<?php echo $row['provinsi']; ?>" required>
+            <span class="field__label-wrap" aria-hidden="true">
+              <span class="field__label">Provinsi</span>
+              </span>
+              <span class="note-1">*</span>
+            </div>
+            <br><br>
+            <div class="field field_v1">
+            <label for="kota" class="ha-screen-reader">Kota/Kabupaten</label><br>
+            <input type="text" name="kota_kabupaten" id="kota" class="field__input" placeholder="Isikan Kota atau Kabupaten" value="<?php echo $row['kota_kabupaten']; ?>" required>
+            <span class="field__label-wrap" aria-hidden="true">
+              <span class="field__label">Kota/Kabupaten</span>
+              </span>
+              <span class="note-1">*</span>
+            </div>
+                <br><br>
+                <div class="field field_v1">
+            <label for="kec" class="ha-screen-reader">Kecamatan</label><br>
+            <input type="text" name="kota_kabupaten" id="kec" class="field__input" placeholder="Isikan Provinsi" value="<?php echo $row['kecamatan']; ?>" required>
+            <span class="field__label-wrap" aria-hidden="true">
+              <span class="field__label">Kecamatan</span>
+              </span>
+              <span class="note-1">*</span>
+            </div>
+                <br><br>
+                <div class="field field_v1">
+            <label for="kel" class="ha-screen-reader">Kelurahan</label><br>
+            <input type="text" name="kelurahan" id="kel" class="field__input" placeholder="Isikan Provinsi" value="<?php echo $row['kelurahan']; ?>" required>
+            <span class="field__label-wrap" aria-hidden="true">
+              <span class="field__label">Kelurahan</span>
+              </span>
+              <span class="note-1">*</span>
+
                 <?php
                                 } else {
     echo "No Record Found";
   } ?>
               </div>
-              <span class="note-1">*</span>
-              <br>
+              <br><br>
               <div class="field field_v1">
                 <label for="jalan" class="ha-screen-reader">Jalan</label><br>
                 <input type="txt" name="jalan" id="jalan" class="field__input" placeholder="Masukkan jalan tempat tinggal anda" value="<?php echo strtoupper($user['jalan'] ?? ''); ?>" required>
@@ -203,16 +228,15 @@ if ($row) { ?>
                       </div>
                       <br><br>
                       <h3>Pendidikan Terakhir :</h3>
-                      <span class="note-1">*</span>
-                      <label for="sd">
-                      <input type="radio" id="sd" name="pendidikan_terakhir" value="1" <?php echo  (intval($user['pendidikan_terakhir']) === 1) ? 'checked' : ''; ?> >SD/Sederajat</label>
-                      <label for="smp">
-                      <input type="radio" id="smp" name="pendidikan_terakhir" value="2" <?php echo (intval($user['pendidikan_terakhir']) === 2) ? 'checked' : ''; ?>>SMP/Sederajat</label>
-                      <label for="sma">
-                      <input type="radio" id="sma" name="pendidikan_terakhir" value="3" <?php echo  (intval($user['pendidikan_terakhir']) === 3) ? 'checked' : ''; ?>>SMA/Sederajat</label>
-                      <label for="s1">
-                      <input type="radio" id="s1" name="pendidikan_terakhir" value="4" <?php echo ($user== 'pendidikan_terakhir') ? 'checked' : ""; ?>>S1/Sederajat/Lebih</label>
-                      <br>
+                      <div class="goldar-4">
+                <label for="bloodType"></label>
+                <select id="bloodType" name="pendidikan_terakhir" required>
+                <option value="1" <?php if ($user !== null && $user['pendidikan_terakhir'] === 'SD/Sederajat') echo "selected"; ?>>SD/Sederajat</option>
+                <option value="2" <?php if ($user !== null && $user['pendidikan_terakhir'] === 'SMP/Sederajat') echo "selected"; ?>>SMP/Sederajat</option>
+                <option value="3" <?php if ($user !== null && $user['pendidikan_terakhir'] === 'SMA/Sederajat') echo "selected"; ?>>SMA/Sederajat</option>
+                <option value="4" <?php if ($user !== null && $user['pendidikan_terakhir'] === 'S1/Sederajat/Lebih') echo "selected"; ?>>S1/Sederajat/Lebih</option>
+                </select>
+              </div>
                       <div class="field field_v1">
                         <label for="pekerjaan" class="ha-screen-reader">Pekerjaan</label><br>
                         <input type="txt" name="pekerjaan" id="pekerjaan" class="field__input" placeholder="Masukkan pekerjaan anda" value="<?php echo strtoupper($user['pekerjaan'] ?? ''); ?>" required>
@@ -294,11 +318,11 @@ if ($row) { ?>
                                     <span class="note-1">*</span>
                                   </div>
                                   <br><br><br>
-                                  <label for="file"></label>
+                                  <!-- <label for="file"></label>
                                   <span>Foto 3X4 :</span>
                                   <span class="note-1">*</span>
-                                  <input type="file" id="file" name="foto" class="file-input" accept="image/*" value="" required>
-                                   <button  class="kirim" type="submit"value="submit">Simpan</button>
+                                  <input type="file" id="file" name="foto" class="file-input" accept="image/*" value="" required> -->
+                                   <button  class="kirim" type="submit" name="submit" value="submit">Simpan</button>
                                    <?php
                                 } else {
     echo "No Record Found";

@@ -16,17 +16,23 @@ class User_model extends Database {
         $sql = "SELECT * FROM users WHERE username = '$this->username'";
         $result = mysqli_query($this->conn, $sql);
 
+        if (mysqli_num_rows($result) > 0) 
         if (mysqli_num_rows($result) > 0) {
-            $user = mysqli_fetch_assoc($result);
-            if (password_verify($this->password, $user['password'])) {
-                $_SESSION['id_users'] = true;
-                return $user;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+                    $user = mysqli_fetch_assoc($result);
+                    if ($user['level'] == 'admin') {
+                        // jika level adalah admin, tidak perlu verifikasi password
+                        $_SESSION['id_users'] = $user['id_users'];
+                        return $user;
+                    } elseif (password_verify($this->password, $user['password'])) {
+                        // jika level adalah non-admin, lakukan verifikasi password
+                        $_SESSION['id_users'] = $user['id_users'];
+                        return $user;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
     }
 }
 

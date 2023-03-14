@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
   session_start();
   
   // ambil id_user dari session
-  $id_users = $_SESSION['id_users'];
+        $id_users = $_SESSION['id_users'];
         $program = $_POST['program'];
         $kamar = $_POST['kamar'];
         $nama_lengkap = $_POST['nama_lengkap'];
@@ -60,7 +60,9 @@ if (isset($_POST['submit'])) {
         
     $formulir = new Formulir($id_users, $program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga, $foto, $timestamp, $status);
     if($formulir->Tambah_data()){
-        echo "<script>alert('Berhasil');window.location='../display/user/table_jadwal.html';</script>";
+        header("Location: ../display/user/table_jadwal.html");
+    } else {
+      echo "error";
     }
 
    

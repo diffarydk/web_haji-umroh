@@ -1,3 +1,7 @@
+<?php
+include('../../../connection.php');
+include_once('../../../input/DashboardModel.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,12 +17,28 @@
     <div class="hContainer profile">
         <div class="pContainer">
             <div class="horizontal"></div>
+            <?php
+          $users = new admin();
+          $id_users = $_GET['id_users'] ?? null; 
+  $result = $users->getData();
+                                          if($result)
+                                      {
+                                          foreach($result as $row)
+                                          {
+                                            ?>
                 <h1>Pembayaran</h1>
-                <a href="dashboard_user.html">
+                <a href="dashboard_user.php?id_users=<?php echo $row['id_users']; ?>">
                     <button class="tnm tnm-5">
                       <p>Data Jamaah</p>
                     </button>
-                </a>
+                </a><?php
+              }
+  }
+  else
+  {
+      echo "No Record Found";
+  }
+                                    ?>
                 <div class="block block-1">
                   <p>123456778910</p>
                   <p>diffary dzikri khattab</p>

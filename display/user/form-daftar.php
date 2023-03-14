@@ -141,28 +141,28 @@ session_start();
               <br>
               <div class="goldar">
                 <label for="dataOption"></label>
-                <select id="provinsi" name="provinsi" ></select>
+                <select id="provinsi" name="provinsi" required></select>
                 <option value=""></option>
                 </div>
                 <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
                 <label for="dataOption"></label>
-                <select id="kota" name="kota_kabupaten" ></select>
+                <select id="kota" name="kota_kabupaten" required></select>
                 <option value=""></option>
                 </div>
                 <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
                 <label for="dataOption" ></label>
-                <select id="kec" name="kecamatan" ></select>
+                <select id="kec" name="kecamatan" required></select>
                 <option value=""></option>
                 </div>
                 <span class="note-1">*</span>
                 <br>
                 <div class="goldar">
                 <label for="dataOption"></label>
-                <select id="kel" name="kelurahan" ></select>
+                <select id="kel" name="kelurahan" required></select>
                 <option value=""></option>
               </div>
               <span class="note-1">*</span>
