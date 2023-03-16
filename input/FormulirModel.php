@@ -36,11 +36,14 @@ class Formulir extends Database{
     private $hubungan_keluarga;
     private $no_telp_keluarga;
     private $foto;
+    private $tanggal_keberangkatan;
+    private $maskapai;
+    private $tanggal_pulang;
     private $timestamp;
     private $status;
 
 
-    public function __construct($id_users, $program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga, $foto, $timestamp, $status)
+    public function __construct($id_users, $program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga, $foto, $tanggal_keberangkatan, $maskapai, $tanggal_pulang, $timestamp, $status)
     {
       $db = new Database;
       $this->conn = $db->conn;
@@ -77,7 +80,10 @@ class Formulir extends Database{
         $this->keluarga_yg_bisa_dihubungi = $keluarga_yg_bisa_dihubungi;
         $this->hubungan_keluarga = $hubungan_keluarga;
         $this->no_telp_keluarga = $no_telp_keluarga;
-        $this->foto = $foto; 
+        $this->foto = $foto;
+        $this->tanggal_keberangkatan;
+        $this->maskapai;
+        $this->tanggal_pulang; 
         $this->timestamp = $timestamp;    
         $this->status = $status;    
     }
@@ -105,7 +111,7 @@ class Formulir extends Database{
       '$this->kecamatan', '$this->kelurahan', '$this->jalan', '$this->email', '$this->no_telp_rumah', '$this->no_telp_seluler',
       '$this->pendidikan_terakhir', '$this->pekerjaan', '$this->keluarga_yg_ikut', '$this->hubungan', '$this->no_telp',
       '$this->informasi_pendaftaran','$this->penyakit_kronis', '$this->keluarga_yg_bisa_dihubungi', '$this->hubungan_keluarga',
-      '$this->no_telp_keluarga', '$this->foto','$this->timestamp', '$this->status')";
+      '$this->no_telp_keluarga', '$this->foto', '$this->tanggal_keberangkatan', '$this->maskapai', '$this->tanggal_pulang', '$this->timestamp', '$this->status')";
 
 if (mysqli_query($this->conn, $query)) {
     return true;
@@ -121,6 +127,15 @@ if (mysqli_query($this->conn, $query)) {
       $timestamp = strtotime($datetimeStr);
       return $timestamp;
     }
-   
-    
+
+    public function get_id_formulir()
+    {
+      $query="SELECT id_formulir FROM formulir ORDER BY id_formulir DESC LIMIT 1";
+      $result = mysqli_query($this->conn, $query);
+      if ($result && $row = mysqli_fetch_assoc($result)) {
+        return $row['id_formulir'];
+      } else {
+        return false;
+      }
+    }
 }

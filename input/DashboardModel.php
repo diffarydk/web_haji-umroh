@@ -116,14 +116,26 @@ class admin extends Database {
         
     }
 
-    public function TambahData() {
-        $id_jadwal = rand(1, 9999);
-    
+    public function TambahData() {    
+        $id_jadwal = rand(1, 9999); // menghasilkan string acak dengan panjang 32 karakter
+        $check_id_formulir_query = "SELECT * FROM jadwal_perjalanan WHERE id_jadwal ='$id_jadwal' LIMIT 1";
+        $result = mysqli_query($this->conn, $check_id_formulir_query);
+        $formulir = mysqli_fetch_assoc($result);
+  
+        // cek apakah id_formulir sudah ada di database
+        // jika sudah, buat id_formulir baru sampai id_formulir unik
+        while ($formulir) {
+            $id_jadwal = rand(1, 9999);
+            $check_id_formulir_query = "SELECT * FROM formulir WHERE id_jadwal ='$id_jadwal' LIMIT 1";
+            $result = mysqli_query($this->conn, $check_id_formulir_query);
+            $formulir = mysqli_fetch_assoc($result);
+        }
         // Ambil data dari form input
         $tanggal_keberangkatan = $_POST['tanggal_keberangkatan'];
         $maskapai = $_POST['maskapai'];
         $tanggal_pulang = $_POST['tanggal_pulang'];
         $jumlah_kursi = $_POST['jumlah_kursi'];
+        
     
         // Buat query untuk insert data ke tabel table_jadwal
         $sql = "INSERT INTO jadwal_perjalanan (id_jadwal, tanggal_keberangkatan, maskapai, tanggal_pulang, jumlah_kursi)

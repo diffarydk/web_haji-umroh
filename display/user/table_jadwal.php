@@ -1,6 +1,6 @@
 <?php
 include('../../connection.php');
-include_once('../../input/DashboardModel.php');
+include_once('../../input/DataFormulir.php'); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,45 +14,62 @@ include_once('../../input/DashboardModel.php');
 <body>
     <main>
     <div class="hContainer">
-    <?php
-    $users = new admin();
-    $id_users = $_GET['id_jadwal'] ?? null;
-    $result = $users->DataJadwal();
-    if($result) {
-      ?>
-        <table class="schedule-table">
-            <thead>
-              <tr>
-                <th>Tanggal Keberangkatan</th>
-                <th>Maskapai</th>
-                <th>Tanggal Pulang</th>
-                <th>Jumlah</th>
-                <th>Jumlah Sisa</th>
-                <th>Pilih</th>
-              </tr>
-            </thead>
-            <tbody>
-            <?php
-      foreach($result as $row) {
-        ?>
-              <tr class="schedule-row">
-                <td class="schedule-date"><?= $row['tanggal_keberangkatan']; ?></td>
-                <td class="schedule-airline"><?= ucwords($row['maskapai']); ?></td>
-                <td class="schedule-return-date"><?= $row['tanggal_pulang']; ?></td>
-                <td class="schedule-availability"><?= $row['jumlah_kursi']; ?></td>
-                <td class="schedule-availability">20</td>
-                <td class="schedule-select"><input type="radio" name="schedule"></td>
-              </tr>
-              <?php
-      }
-      ?>
-            </tbody>
-          </table>
-          <?php
+    <?php 
+$formulir = new Formulir();
+$id_users = $_GET['id_jadwal'] ?? null;
+$row = $formulir->DataJadwal();
+if($row){
+?>
+
+<form action="../../controller/TableController.php" method="post">
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th>Tanggal Keberangkatan</th>
+        <th>Maskapai</th>
+        <th>Tanggal Pulang</th>
+        <th>Jumlah</th>
+        <th>Jumlah Sisa</th>
+        <th>Pilih</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach($row as $show) { ?>
+      <tr class="schedule-row">
+        <td class="schedule-date"><?= $show['tanggal_keberangkatan']; ?></td>
+        <td class="schedule-airline"><?= ucwords($show['maskapai']); ?></td>
+        <td class="schedule-return-date"><?= $show['tanggal_pulang']; ?></td>
+        <td class="schedule-availability"><?= $show['jumlah_kursi']; ?></td>
+        <td class="schedule-availability">20</td>
+        <td class="schedule-select">
+          <input type="radio" name="schedule" value="<?= $show['id_jadwal']; ?>">
+        </td>
+      </tr>
+      <?php } ?>
+    </tbody>
+  </table>
+  <a href="form-daftar.php">
+    <button class="smpn sm-4"><p>Kembali</p></button>
+  </a>
+  <button class="smpn sm-2" type="submit" name="submit"><p>Kirim</p></button>
+</form>
+
+<?php } else { ?>
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th>Tanggal Keberangkatan</th>
+        <th>Maskapai</th>
+        <th>Tanggal Pulang</th>
+        <th>Jumlah</th>
+        <th>Sisa</th>
+        <th>Hapus</th>
+      </tr>
+    </thead>
+  </table>
+      <?php
     }
-        ?>
-          <a href="form-daftar.php"><button class="smpn sm-4"><p>Kembali</p></button></a>
-          <a href="form_pembayaran.html"><button class="smpn sm-2"><p>Kirim</p></button></a>
+  ?>
         <nav class="sidebar">
           <a href="profile.php"><img class="user-logo" src=".././core/asset/icon-user.png" alt="user-logo"></a>  
             <ul class="nav-list">

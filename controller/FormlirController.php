@@ -39,6 +39,9 @@ if (isset($_POST['submit'])) {
         $hubungan_keluarga = $_POST['hubungan_keluarga'];
         $no_telp_keluarga = $_POST['no_telp_keluarga'];
         $foto = $_FILES['foto'];
+        $tanggal_keberangkatan = $_POST['tanggal_keberangkatan'];
+        $maskapai = $_POST['maskapai'];
+        $tanggal_pulang = $_POST['tanggal_pulang'];
 
   // Mendapatkan nama file
   $fileName = $foto['name'];
@@ -58,9 +61,10 @@ if (isset($_POST['submit'])) {
   $timestamp = date('Y-m-d H:i:s');
   $status = 'belum'; 
         
-    $formulir = new Formulir($id_users, $program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga, $foto, $timestamp, $status);
+    $formulir = new Formulir($id_users,$program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga, $foto, $tanggal_keberangkatan, $maskapai, $tanggal_pulang, $timestamp, $status);
     if($formulir->Tambah_data()){
-        header("Location: ../display/user/table_jadwal.html");
+      $id_formulir = $formulir->get_id_formulir();
+      echo "<script>alert('Berhasil');window.location='../display/user/table_jadwal.php?id_formulir=$id_formulir';</script>";
     } else {
       echo "error";
     }
