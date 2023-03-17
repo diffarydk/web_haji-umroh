@@ -1,30 +1,44 @@
 <?php
-require_once "../input/LoginModel.php";
-
-$username = $_POST['username'];
-$password = $_POST['password'];
-
-$user = new User_model($username, $password);
-$result = $user->doLogin();
-
-if ($result) {
-    $_SESSION['username'] = $result['username'];
-    $_SESSION['level'] = $result['level'];
-    $_SESSION['id_users'] = $result['id_users'];
-
-    // Set cookie
-    $expiry = time() + (86400 * 30); // 30 hari
-    setcookie('username', $result['username'], $expiry);
-    setcookie('level', $result['level'], $expiry);
-
-    if ($_SESSION['level'] == 'users') {
-        header('location: ../index.php');
-        exit();
-    } elseif ($_SESSION['level'] == 'admin') {
-        header("location: ../display/admin/welcome.html");
-        exit();
+session_start();
+class LoginController extends LoginModel{
+    private $user;
+    public function __construct() {
+        $this->user = new LoginModel();
     }
-} else {
-    echo "<script>alert('Username atau password salah');window.location='../display/user/login.php';</script>";
-    exit();
+    
+    public function login($username, $password) {
+        if (isset($_POST['submit'])) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+    
+            $result = $this->user->login($username, $password);
+    
+            if ($result !== false) {
+                $_SESSION['id_users'] = $result['id_users'];
+                $_SESSION['username'] = $result['username'];
+                $_SESSION['level'] = $result['level'];
+    
+                if ($result['level'] == 'admin') {
+                    header("Location: ../../display/admin/welcome.php");
+                } else {
+                    header("Location: ../../index.php");
+                }
+    
+                exit();
+            } else {
+                echo "Username atau password salah";
+            }
+        }
+    }
 }
+    
+    // Inisiasi LoginController
+    // $loginController = new LoginController();
+    // $loginController->login();
+    
+    
+    
+    
+    
+    
+

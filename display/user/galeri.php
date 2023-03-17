@@ -1,3 +1,8 @@
+<?php
+require "../LinkModelController.php";
+  $gallery = new GaleriController();
+  $photos = $gallery->getAllPhotos();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,35 +11,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galeri</title>
     <link rel="stylesheet" href="../../core/style/style.css"/>
+    <link rel="stylesheet" href="../../core/style/galeri.css">
 </head>
 <body>
-    <main>
-    <div class="hContainer">
-        <div class="Pt">
-	<div class="tox">
-		<img src="https://picsum.photos/200/200" alt="Foto 1">
-	</div>
-	<div class="tox">
-		<img src="https://picsum.photos/200/200" alt="Foto 2">
-	</div>
-	<div class="tox">
-		<img src="https://picsum.photos/200/200" alt="Foto 3">
-	</div>
-	<div class="tox">
-		<img src="https://picsum.photos/200/200" alt="Foto 4">
-	</div>
-    <div class="tox">
-		<img src="https://picsum.photos/200/200" alt="Foto 5">
-	</div>
-    <div class="tox">
-		<img src="https://picsum.photos/200/200" alt="Foto 6">
-	</div>
-    <div class="tox">
-		<img src="https://picsum.photos/200/200" alt="Foto 7">
-	</div>
-    <div class="tox">
-		<img src="https://picsum.photos/200/200" alt="Foto 8">
-	</div>
+<h1>Galeri</h1>
+<div class="gallery">
+  <div class="main-image">
+    <img src="../../core/galeri/<?php echo $photos[0]['nama_file']; ?>" >
+  </div>
+  <div class="gallery-items">
+    <?php foreach ($photos as $index => $photo): ?>
+      <?php if ($index !== 0): ?>
+        <div class="gallery-item">
+          <img src="../../core/galeri/<?php echo $photo['nama_file']; ?>" >
+        </div>
+      <?php endif; ?>
+    <?php endforeach; ?>
+  </div>
+</div>
+
+    
     </div>
         <nav class="sidebar">
             <a href="profile.html"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" ></a>  
@@ -58,4 +54,7 @@
 </main>
     <script src="../../core/script/script.js"></script>
 </body>
+
+</script>
+</script>
 </html>

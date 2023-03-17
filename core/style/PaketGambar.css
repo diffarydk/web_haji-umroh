@@ -1,0 +1,99 @@
+/* sisanya mengambil dari galer.css */
+
+
+.container-Admin{
+    height: 946px;
+}
+
+h1{
+    margin-top: 150px;
+    text-align: center;
+}
+
+img {
+    width: 800px;
+    height: 400px;
+}
+
+table {
+    width: 95%;
+    border-collapse: collapse;
+    margin: auto;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #f9fafb;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+}
+
+th {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+
+.button-paket {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #1c64f2;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1e40af;
+}
+
+
+/* pop up */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 9999;
+  }
+
+  .popup-content {
+    position: absolute;
+    background-color: #fff;
+    max-width: 500px;
+    width: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .popup-btns button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .cancel {
+    background-color: #bbb;
+    color: #fff;
+    margin-right: 10px;
+  }
+
+  .update {
+    background-color: #f50057;
+    color: #fff;
+  }
