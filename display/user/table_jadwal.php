@@ -1,6 +1,8 @@
 <?php
 include('../../connection.php');
-include_once('../../input/DataFormulir.php'); 
+include_once('../../input/DataFormulir.php');
+session_start();
+$_SESSION['id_formulir'] = 'c09277202fe04940';
 ?>
 <!DOCTYPE html>
 <html lang="en">
