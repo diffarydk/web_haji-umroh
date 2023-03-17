@@ -1229,6 +1229,9 @@ text-align: center;
   border: none;
   cursor: pointer;
 }
+.tnm-1:hover{
+  background-color: #E65D00;
+}
 .tnm-1 p{
   font-style: normal;
   font-weight: 700;
@@ -1248,6 +1251,9 @@ text-align: center;
   top: 19px;
   border: none;
   cursor: pointer;
+}
+.tnm-2:hover{
+  background-color: #1C585A;
 }
 .tnm-2 p{
   font-style: normal;
@@ -1269,6 +1275,9 @@ text-align: center;
   top: 19px;
   border: none;
   cursor: pointer;
+}
+.tnm-3:hover{
+  background-color: #1C585A;
 }
 .tnm-3 p{
   font-style: normal;
@@ -1292,6 +1301,9 @@ text-align: center;
   border: none;
   cursor: pointer;  
 }
+.tnm-4:hover{
+  background-color: #E65D00;
+}
 .tnm-4 p{
   font-style: normal;
   font-weight: 700;
@@ -1312,6 +1324,9 @@ text-align: center;
   padding: 0px;
   border: none;
   cursor: pointer;
+}
+.tnm-5:hover{
+  background-color: #E65D00;
 }
 .tnm-5 p{
   font-style: normal;
@@ -1336,6 +1351,9 @@ text-align: center;
   border: none;
   cursor: pointer;
 }
+.tnm-6:hover{
+  background-color: #E65D00;
+}
 .tnm-6 p{
   font-style: normal;
   font-weight: 700;
@@ -1359,6 +1377,9 @@ text-align: center;
   border: none;
   cursor: pointer;
 }
+.tnm-7:hover{
+  background-color: #B3B3B3;
+}
 .tnm-7 p{
   font-style: normal;
   font-weight: 700;
@@ -1374,6 +1395,32 @@ text-align: center;
   width: 135px;
   left: 9px;
 }
+.tnm-8{
+  background-color: #FF7315;
+  top: 86px;
+  left: 767px;
+  padding: 0px;
+  border: none;
+  cursor: pointer;
+}
+.tnm-8:hover{
+  background-color: #E65D00;
+}
+.tnm-8 p{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #FFFFFF;
+  position: absolute;
+  margin: 0px;
+  top: 6px;
+  right: 47px;
+  z-index: 0;
+  width: 100px;
+  left: 26px;
+}
 .tns{
   position: absolute;
   width: 312px;
@@ -1384,6 +1431,9 @@ text-align: center;
   border: none;
   cursor: pointer;
   top: 22px;
+}
+.tns:hover{
+  background-color: #1C585A;
 }
 .nmt-1{
   position: absolute;
@@ -1515,23 +1565,52 @@ text-align: center;
   left: 172px;
   top: 130px;
 }
+.sm-1:hover{
+  background-color: #1C585A;
+}
 .sm-2{
   background-color: #FF7315;
   left: 391px;
   top: 130px;
+}
+.sm-2:hover{
+  background-color: #E65D00;
 }
 .sm-3{
   background-color: #D9D9D9;
   left: 391px;
   top: 130px;
 }
+.sm-3:hover{
+  background-color: #B3B3B3;
+}
 .sm-4 {
   background-color: #D9D9D9;
   left: 172px;
   top: 130px;
 }
+.sm-4:hover{
+  background-color: #B3B3B3;
+}
 .uil-trash-alt{
   position: relative;
   left: 60px;
   font-size: 25px;
+}
+
+.list-item-login{
+  display: flex;
+  position: absolute;
+  margin-top: -53px;
+  margin-right: 0px;
+  margin-left: 160px;
+  width: 309px;
+  height: 34px;
+  bottom: 767px;
+
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 4;
 }

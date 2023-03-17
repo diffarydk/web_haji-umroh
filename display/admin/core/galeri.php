@@ -77,6 +77,7 @@ $controller->handleRequest();
     <?php } ?>
   </tbody>
 </table>
+<a href="EditPaket.php"><button class="smpn sm-2"><p>Input Paket</p></button></a>
     </div>
         <nav class="sidebar">
             <a href="profile.html"><img class="user-logo" src="../../../core/asset/icon-user.png" alt="user-logo" ></a>  

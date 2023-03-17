@@ -69,7 +69,8 @@ foreach ($row as $r) {
 </table>
 
 
-
+<a href="dashboard.php"><button class="smpn sm-4"><p>Kembali</p></button></a>
+<a href="galeri.php"><button class="smpn sm-2"><p>Input Galeri</p></button></a>
   </div>
     </div>
         <nav class="sidebar">
@@ -92,7 +93,7 @@ foreach ($row as $r) {
         </nav>
     </div>
 </main>
-    <script src="../../core/script/script.js"></script>
+    <script src="../../../core/script/script.js"></script>
 </body>
 
 </script>

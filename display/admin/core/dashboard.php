@@ -72,6 +72,7 @@ include_once('../../../input/ProfileModel.php');
                 </div>
                 </div>
                 <a href="table_jadwal_admin.php"><button class="tnm tnm-5"><p>Table Jadwal</p></button></a> 
+                <a href = "EditPaket.php"><button class="tnm tnm-8" ><p>Input Paket</p></button>
                 <?php
               }
            }
@@ -92,7 +93,7 @@ include_once('../../../input/ProfileModel.php');
               </ul>
         </nav>
         <nav class="wrapper">
-          <a href="../welcome.html"><img class="img-logo" src="../../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
+          <a href="../welcome.php"><img class="img-logo" src="../../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
             <button class="hamburger">
                 <div class="bar"></div>
             </button>
@@ -108,6 +109,9 @@ blocks.forEach(block => {
   block.style.top = `${topValue}px`;
   topValue += 100; // increase topValue by 100px for the next block
 });
+</script>
+<script>
+
 </script>
 </body>
 </html>

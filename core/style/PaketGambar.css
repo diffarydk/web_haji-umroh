@@ -50,10 +50,12 @@ th {
     cursor: pointer;
 }
 
-button:hover {
+.update:hover {
     background-color: #1e40af;
 }
-
+.button-paket:hover {
+    background-color: #1e40af;
+}
 
 /* pop up */
 .popup {
