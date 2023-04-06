@@ -6,31 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selamat Datang</title>
     <link rel="stylesheet" href="../../core/style/style.css"/>
+    <link rel="stylesheet" href="../../core/style/pembayaran.css"/>
 </head>
 <body>
     <main>
-    <div class="hContainer">
-       <div class="Pa"> 
-        <h1 class="heading">Form Pembayaran</h1>
-        <form action="" method="post" enctype="multipart/form-data">
-        <p>Nama Bank : BSI</p>
-        <br><br>
-        <p>Nama Rekening : PT Itkontama Jelajah Bumi Imani</p>
-        <br><br>
-        <p>Nomor Rekening : 7221511411</p>
-        <br><br>
-        <p>Nominal Pembayaran : </p>
-        <br><br>
-        <label for="file"></label>
-        <span class="fth">Bukti Pembayaran :</span>
-        <input type="file" id="file" name="file" class="file-input bayar" required>
-        <div class="button-container pa">
-        <a href="konfirmasi_pembayaran.html"><button href="konfirmasi_pembayaran.html" class="right-button kirim-2" type="submit"  name ="submit" value="submit">Kirim</button></a>
+    <div class="page-container">
+    <div class="payment-container">
+      <form action="#" method="post" enctype="multipart/form-data">
+        <div class="payment-info">
+          <div class="row">
+            <label for="bank">Nama Bank:</label>
+            <input type="text" id="bank" name="bank" value="BSI" readonly>
+          </div>
+          <div class="row">
+            <label for="account-name">Nama Rekening:</label>
+            <input type="text" id="account-name" name="account-name" value="PT Itkontama Jelajah Bumi Imani" readonly>
+          </div>
+          <div class="row">
+            <label for="account-number">Nomor Rekening:</label>
+            <input type="text" id="account-number" name="account-number" value="7221511411" readonly>
+          </div>
+          <div class="row">
+            <label for="amount">Nominal Pembayaran:</label>
+            <input type="number" id="amount" name="amount" readonly>
+          </div>
+          <div class="row">
+            <label for="proof">Bukti Pembayaran:</label>
+            <input type="file" id="proof" name="proof" accept="image/*" required>
+          </div>
         </div>
-        </form>
-        <div class="button-container pa">
-            <a href="table_jadwal.php"><button class="left-button kmbl">Kembali</button></a>
-       </div>
+        <div class="btn-container">
+          <button class="sbt-button" type="submit" name="submit">Kirim</button>
+          <a href="table_jadwal.php" class="back-button">Kembali</a>
+        </div>
+      </form>
+    </div>
+  </div>  
         <nav class="sidebar">
             <a href="profile.html"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../index.html"></a>  
             <ul class="nav-list">

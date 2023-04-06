@@ -40,7 +40,7 @@ $row = $controller->GetAll();
               </ul>
         </nav>
         <nav class="wrapper">
-          <a href="index.html"><img class="img-logo" src="core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
+          <a href="index.php"><img class="img-logo" src="core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
             <button class="hamburger">
                 <div class="bar"></div>
             </button>

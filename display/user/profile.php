@@ -90,16 +90,7 @@ if(!isset($_SESSION['id_users'])) {
         <?php
     }
 } ?>
-      </div> <!--
-                <div class="block">
-                  <i class="uil uil-lock-alt"></i>
-                  <a href="#">
-                    <button class="tns">
-                      <p>Menunggu Konfirmasi Pembayaran</p>
-                    </button>
-                  </a>
-                </div>
-                <br><br> -->
+      </div> 
                 <nav class="sidebar">
           <a href="profile.php"><img class="user-logo" src="../../core/asset/icon-user.png" alt="user-logo" href="../index.html"></a>  
             <ul class="nav-list">

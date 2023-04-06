@@ -31,12 +31,14 @@ include_once('../../../input/DashboardModel.php');
       <table class="schedule-table">
         <thead>
           <tr>
-            <th>Tanggal Keberangkatan</th>
-            <th>Maskapai</th>
-            <th>Tanggal Pulang</th>
-            <th>Jumlah</th>
-            <th>Sisa</th>
-            <th>Hapus</th>
+          <th>Tanggal Keberangkatan</th>
+                <th>Tanggal Pulang</th>
+                <th>Maskapai</th>
+                <th>Mekah</th>
+                <th>Madinah</th>
+                <th>Jumlah</th>
+                <th>Sisa</th>
+                <th>Hapus</th>
           </tr>
         </thead>
         <tbody>
@@ -45,8 +47,10 @@ include_once('../../../input/DashboardModel.php');
         ?>
         <tr class="schedule-row">
           <td class="schedule-date"><?= $row['tanggal_keberangkatan']; ?></td>
-          <td class="schedule-airline"><?= ucwords($row['maskapai']); ?></td>
           <td class="schedule-return-date" value=""><?= $row['tanggal_pulang']; ?></td>
+          <td class="schedule-airline"><?= ucwords($row['maskapai']); ?></td>
+          <td class="schedule-return-date" value=""><?= ucwords($row['mekah']) ?></td>
+          <td class="schedule-return-date" value=""><?= ucwords($row['madinah']) ?></td>
           <td class="schedule-availability" value=""><?= $row['jumlah_kursi']; ?></td>
           <td class="schedule-availability">20</td>
           <td><a href="table_jadwal_admin.php?delete=<?= $row['id_jadwal']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><button class="uil uil-trash-alt"></button></a></td>
@@ -63,8 +67,10 @@ include_once('../../../input/DashboardModel.php');
             <thead>
               <tr>
                 <th>Tanggal Keberangkatan</th>
-                <th>Maskapai</th>
                 <th>Tanggal Pulang</th>
+                <th>Maskapai</th>
+                <th>Mekah</th>
+                <th>Madinah</th>
                 <th>Jumlah</th>
                 <th>Sisa</th>
                 <th>Hapus</th>

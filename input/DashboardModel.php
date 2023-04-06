@@ -117,29 +117,31 @@ class admin extends Database {
     }
 
     public function TambahData() {    
-        $id_jadwal = rand(1, 9999); // menghasilkan string acak dengan panjang 32 karakter
-        $check_id_formulir_query = "SELECT * FROM jadwal_perjalanan WHERE id_jadwal ='$id_jadwal' LIMIT 1";
-        $result = mysqli_query($this->conn, $check_id_formulir_query);
-        $formulir = mysqli_fetch_assoc($result);
+        // $id_jadwal = rand(1, 9999); // menghasilkan string acak dengan panjang 32 karakter
+        // $check_id_formulir_query = "SELECT * FROM jadwal_perjalanan WHERE id_jadwal ='$id_jadwal' LIMIT 1";
+        // $result = mysqli_query($this->conn, $check_id_formulir_query);
+        // $formulir = mysqli_fetch_assoc($result);
   
-        // cek apakah id_formulir sudah ada di database
-        // jika sudah, buat id_formulir baru sampai id_formulir unik
-        while ($formulir) {
-            $id_jadwal = rand(1, 9999);
-            $check_id_formulir_query = "SELECT * FROM formulir WHERE id_jadwal ='$id_jadwal' LIMIT 1";
-            $result = mysqli_query($this->conn, $check_id_formulir_query);
-            $formulir = mysqli_fetch_assoc($result);
-        }
+        // // cek apakah id_formulir sudah ada di database
+        // // jika sudah, buat id_formulir baru sampai id_formulir unik
+        // while ($formulir) {
+        //     $id_jadwal = rand(1, 9999);
+        //     $check_id_formulir_query = "SELECT * FROM formulir WHERE id_jadwal ='$id_jadwal' LIMIT 1";
+        //     $result = mysqli_query($this->conn, $check_id_formulir_query);
+        //     $formulir = mysqli_fetch_assoc($result);
+        // }
         // Ambil data dari form input
         $tanggal_keberangkatan = $_POST['tanggal_keberangkatan'];
-        $maskapai = $_POST['maskapai'];
         $tanggal_pulang = $_POST['tanggal_pulang'];
+        $maskapai = $_POST['maskapai'];
+        $mekah = $_POST['mekah'];
+        $madinah = $_POST['madinah'];
         $jumlah_kursi = $_POST['jumlah_kursi'];
         
     
         // Buat query untuk insert data ke tabel table_jadwal
-        $sql = "INSERT INTO jadwal_perjalanan (id_jadwal, tanggal_keberangkatan, maskapai, tanggal_pulang, jumlah_kursi)
-                VALUES ('$id_jadwal', '$tanggal_keberangkatan', '$maskapai', '$tanggal_pulang', '$jumlah_kursi')";
+        $sql = "INSERT INTO jadwal_perjalanan (id_jadwal, tanggal_keberangkatan,tanggal_pulang, maskapai, mekah, madinah , jumlah_kursi)
+                VALUES ('', '$tanggal_keberangkatan', '$tanggal_pulang', '$maskapai', '$mekah', '$madinah', '$jumlah_kursi')";
     
         // Jalankan query
         if ($this->conn->query($sql) === TRUE) {
@@ -172,15 +174,29 @@ class admin extends Database {
             return false;
         }  
     }
+    
+    // public function ubahData($id_formulir, $id_users, $program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga) {
+
+    //     $stmt = $this->conn->prepare("UPDATE formulir SET program = ?, kamar = ?, nama_lengkap = ?, nik = ?, nama_ayah_kandung = ?, tempat_lahir = ?, tanggal_lahir = ?, no_paspor = ?, tempat_dikeluarkan_paspor = ?, tanggal_dikeluarkan_paspor = ?, masa_berlaku_paspor = ?, jenis_kelamin = ?, golongan_darah = ?, status_perkawinan = ?, provinsi = ?, kota_kabupaten = ?, kecamatan = ?, kelurahan = ?, jalan = ?, email = ?, no_telp_rumah = ?, no_telp_seluler = ?, pendidikan_terakhir = ?, pekerjaan = ?, keluarga_yg_ikut = ?, hubungan = ?, no_telp = ?, informasi_pendaftaran = ?, penyakit_kronis = ?, keluarga_yg_bisa_dihubungi = ?, hubungan_keluarga = ?, no_telp_keluarga = ? WHERE id_formulir = ? AND id_users = ?");
+    //     $stmt->bind_param("sssisssisssssssssssssssssssssssii", $program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga, $id_formulir, $id_users);
+
+    //     if ($stmt->execute()) {
+    //     return true;
+    //     } else {
+    //         echo "No Record Found";
+    //       }
+    
+    // }
+
     public function ubahData($id_formulir, $id_users, $program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga) {
 
-        $stmt = $this->conn->prepare("UPDATE formulir SET program = ?, kamar = ?, nama_lengkap = ?, nik = ?, nama_ayah_kandung = ?, tempat_lahir = ?, tanggal_lahir = ?, no_paspor = ?, tempat_dikeluarkan_paspor = ?, tanggal_dikeluarkan_paspor = ?, masa_berlaku_paspor = ?, jenis_kelamin = ?, golongan_darah = ?, status_perkawinan = ?, provinsi = ?, kota_kabupaten = ?, kecamatan = ?, kelurahan = ?, jalan = ?, email = ?, no_telp_rumah = ?, no_telp_seluler = ?, pendidikan_terakhir = ?, pekerjaan = ?, keluarga_yg_ikut = ?, hubungan = ?, no_telp = ?, informasi_pendaftaran = ?, penyakit_kronis = ?, keluarga_yg_bisa_dihubungi = ?, hubungan_keluarga = ?, no_telp_keluarga = ? WHERE id_formulir = ? AND id_users = ?");
-        $stmt->bind_param("ssssssssssssssssssssssssssssssssssi", $program, $kamar, $nama_lengkap, $nik, $nama_ayah_kandung, $tempat_lahir, $tanggal_lahir, $no_paspor, $tempat_dikeluarkan_paspor, $tanggal_dikeluarkan_paspor, $masa_berlaku_paspor, $jenis_kelamin, $golongan_darah, $status_perkawinan, $provinsi, $kota_kabupaten, $kecamatan, $kelurahan, $jalan, $email, $no_telp_rumah, $no_telp_seluler, $pendidikan_terakhir, $pekerjaan, $keluarga_yg_ikut, $hubungan, $no_telp, $informasi_pendaftaran, $penyakit_kronis, $keluarga_yg_bisa_dihubungi, $hubungan_keluarga, $no_telp_keluarga, $id_formulir, $id_users);
-        if ($stmt->execute()) {
-        return true;
+        $sql = "UPDATE formulir SET program = '$program', kamar = '$kamar', nama_lengkap = '$nama_lengkap', nik = '$nik', nama_ayah_kandung = '$nama_ayah_kandung', tempat_lahir = '$tempat_lahir', tanggal_lahir = '$tanggal_lahir', no_paspor = '$no_paspor', tempat_dikeluarkan_paspor = '$tempat_dikeluarkan_paspor', masa_berlaku_paspor = '$masa_berlaku_paspor', jenis_kelamin = '$jenis_kelamin', golongan_darah = '$golongan_darah', status_perkawinan = '$status_perkawinan', provinsi = '$provinsi', kota_kabupaten = '$kota_kabupaten', kecamatan = '$kecamatan', kelurahan = '$kelurahan', jalan = '$jalan', email = '$email', no_telp_rumah = '$no_telp_rumah', no_telp_seluler = '$no_telp_seluler', pendidikan_terakhir = '$pendidikan_terakhir', pekerjaan = '$pekerjaan', keluarga_yg_ikut = '$keluarga_yg_ikut', hubungan = '$hubungan', no_telp = '$no_telp', informasi_pendaftaran = '$informasi_pendaftaran', penyakit_kronis = '$penyakit_kronis', keluarga_yg_bisa_dihubungi = '$keluarga_yg_bisa_dihubungi', hubungan_keluarga = '$hubungan_keluarga', no_telp_keluarga = '$no_telp_keluarga' WHERE id_formulir = '$id_formulir'";
+
+        // Jalankan query
+        if ($this->conn->query($sql) === TRUE) {
+            echo "<script>alert('Penambahan Data Berhasil');window.location=' table_jadwal_admin.php';</script>";
         } else {
-            echo "No Record Found";
-          }
-    
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+        }
     }
 }

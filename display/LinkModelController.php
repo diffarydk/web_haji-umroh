@@ -14,4 +14,10 @@ require_once(__DIR__ .  "/../controller/LoginController.php");
 require_once(__DIR__ . "/../input/EditPaketModel.php");
 require_once(__DIR__ . "/../controller/EditPaketController.php");
 
+require_once(__DIR__ . "/../input/DataFormulir.php");
+require_once(__DIR__ . "/../controller/TableController.php");
+
+require_once(__DIR__ . "/../input/DashboardModel.php");
+require_once(__DIR__ . "/../controller/UpdateController.php");
+
 ?>

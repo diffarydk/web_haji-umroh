@@ -1228,6 +1228,7 @@ text-align: center;
   padding: 0px;
   border: none;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 .tnm-1:hover{
   background-color: #E65D00;
@@ -1251,6 +1252,7 @@ text-align: center;
   top: 19px;
   border: none;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 .tnm-2:hover{
   background-color: #1C585A;
@@ -1275,6 +1277,7 @@ text-align: center;
   top: 19px;
   border: none;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 .tnm-3:hover{
   background-color: #1C585A;
@@ -1299,7 +1302,8 @@ text-align: center;
   top: 19px;
   width: 207px;
   border: none;
-  cursor: pointer;  
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;  
 }
 .tnm-4:hover{
   background-color: #E65D00;
@@ -1324,6 +1328,7 @@ text-align: center;
   padding: 0px;
   border: none;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 .tnm-5:hover{
   background-color: #E65D00;
@@ -1350,6 +1355,7 @@ text-align: center;
   padding: 0px;
   border: none;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 .tnm-6:hover{
   background-color: #E65D00;
@@ -1376,6 +1382,7 @@ text-align: center;
   padding: 0px;
   border: none;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 .tnm-7:hover{
   background-color: #B3B3B3;
@@ -1402,6 +1409,7 @@ text-align: center;
   padding: 0px;
   border: none;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 .tnm-8:hover{
   background-color: #E65D00;
@@ -1421,6 +1429,33 @@ text-align: center;
   width: 100px;
   left: 26px;
 }
+.tnm-9{
+  background-color: #FF7315;
+  top: 86px;
+  left: 940px;
+  padding: 0px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.tnm-9:hover{
+  background-color: #E65D00;
+}
+.tnm-9 p{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #FFFFFF;
+  position: absolute;
+  margin: 0px;
+  top: 6px;
+  right: 47px;
+  z-index: 0;
+  width: 138px;
+  left: 7px;
+}
 .tns{
   position: absolute;
   width: 312px;
@@ -1431,6 +1466,7 @@ text-align: center;
   border: none;
   cursor: pointer;
   top: 22px;
+  transition: all 0.2s ease-in-out;
 }
 .tns:hover{
   background-color: #1C585A;
@@ -1564,6 +1600,7 @@ text-align: center;
   background-color: #247372;
   left: 172px;
   top: 130px;
+  transition: all 0.2s ease-in-out;
 }
 .sm-1:hover{
   background-color: #1C585A;
@@ -1572,6 +1609,7 @@ text-align: center;
   background-color: #FF7315;
   left: 391px;
   top: 130px;
+  transition: all 0.2s ease-in-out;
 }
 .sm-2:hover{
   background-color: #E65D00;
@@ -1580,6 +1618,7 @@ text-align: center;
   background-color: #D9D9D9;
   left: 391px;
   top: 130px;
+  transition: all 0.2s ease-in-out;
 }
 .sm-3:hover{
   background-color: #B3B3B3;
@@ -1588,6 +1627,7 @@ text-align: center;
   background-color: #D9D9D9;
   left: 172px;
   top: 130px;
+  transition: all 0.2s ease-in-out;
 }
 .sm-4:hover{
   background-color: #B3B3B3;
