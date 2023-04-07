@@ -73,7 +73,7 @@ include_once('../../../input/ProfileModel.php');
                 </div>
                 <a href="table_jadwal_admin.php"><button class="tnm tnm-5"><p>Table Jadwal</p></button></a> 
                 <a href = "EditPaket.php"><button class="tnm tnm-8" ><p>Input Paket</p></button>
-                <a href = "form_pembayaran_edit.php"><button class="tnm tnm-9" ><p>Edit Pembayaran</p></button>
+                <a href = "form_pembayaran_admin.php"><button class="tnm tnm-9" ><p>Edit Pembayaran</p></button>
                 <?php
               }
            }

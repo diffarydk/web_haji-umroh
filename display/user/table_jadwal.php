@@ -65,7 +65,7 @@ $rows = $jadwal->GetAllJadwal();
     </table>
     
     <input type="hidden" name="id_formulir" value="<?= $id_formulir; ?>">
-    <a href="form-daftar.php">
+    <a href="form-daftar.php?id_formulir=<?php echo $row['id_formulir']; ?>">
         <button class="smpn sm-4"><p>Kembali</p></button>
     </a>
     <button class="smpn sm-2" type="submit" name="submit" ><p>Kirim</p></button>

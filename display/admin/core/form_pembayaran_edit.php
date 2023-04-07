@@ -1,6 +1,10 @@
 <?php
 include('../../../connection.php');
 include_once('../../../input/DashboardModel.php');
+$admin = new admin(); 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $admin->TambahDataPembayaran();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,31 +20,39 @@ include_once('../../../input/DashboardModel.php');
     <main>
     <div class="page-container">
     <div class="payment-container">
-      <form action="#" method="post" enctype="multipart/form-data" action="../../../controller/">
+      <form action="#" method="post" enctype="multipart/form-data">
         <div class="payment-info">
-          <div class="row">
+          <div class=" row">
             <label for="bank">Nama Bank:</label>
-            <input type="text" id="bank" name="bank">
+            <input type="text" id="bank" name="bank" required>
           </div>
           <div class="row">
             <label for="account-name">Nama Rekening:</label>
-            <input type="text" id="account-name" name="name-rek">
+            <input type="text" id="account-name" name="name_rek" required>
           </div>
           <div class="row">
             <label for="account-number">Nomor Rekening:</label>
-            <input type="text" id="account-number" name="no-rek">
+            <input type="text" id="account-number" name="no_rek">
+          </div>
+          <div class="row">
+            <label for="program">Program:</label>
+            <select type="text" id="program" name="program" required>
+              <option value="" selected> Pilih Program </option>
+              <option value="umroh reguler">Umroh Reguler</option>
+              <option value="umroh plus">Umroh Plus</option>
+            </select>
           </div>
           <div class="row">
             <label for="amount">Nominal Pembayaran:</label>
-            <input type="text" id="amount" name="nominal" pattern="\d*">
+            <input type="text" id="amount" name="nominal" pattern="\d*" required>
           </div>
         <div class="btn-container">
           <button class="sbt-button adm" type="submit" name="submit">Simpan</button>
-          <a href="dashboard.php" class="back-button admi">Kembali</a>
+          <a href="form_pembayaran_admin.php" class="back-button admi">Kembali</a>
         </div>
       </form>
     </div>
-  </div>  
+  </div>
                   <nav class="sidebar">
             <img class="user-logo" src="../../../core/asset/icon-user.png" alt="user-logo" href="../welcome.html"></a>  
               <ul class="nav-list">
@@ -54,7 +66,7 @@ include_once('../../../input/DashboardModel.php');
                 </ul>
           </nav>
         <nav class="wrapper">
-          <a href="../../welcome.hmtl"><img class="img-logo" src="../../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
+          <a href="../welcome.php"><img class="img-logo" src="../../../core/asset/LogoItkontamaTravelOrange2022.png" alt="Logo-icon"></a>
             <button class="hamburger">
                 <div class="bar"></div>
             </button>

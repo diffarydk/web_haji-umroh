@@ -194,9 +194,57 @@ class admin extends Database {
 
         // Jalankan query
         if ($this->conn->query($sql) === TRUE) {
-            echo "<script>alert('Penambahan Data Berhasil');window.location=' table_jadwal_admin.php';</script>";
+            echo "<script>alert('Penambahan Data Berhasil');window.location=' dashboard_user.php?id_users=$id_users';</script>";
         } else {
             echo "Error: " . $sql . "<br>" . $this->conn->error;
         }
+    }
+
+    public function TambahDataPembayaran() {
+        $id_pembayaran = rand(1, 99999);
+        $bank = $_POST['bank'];
+        $name_rek = $_POST['name_rek'];
+        $no_rek = $_POST['no_rek'];
+        $program = $_POST['program'];
+        $nominal = $_POST['nominal'];
+        
+    
+        // Buat query untuk insert data ke tabel table_jadwal
+        $sql = "INSERT INTO form_pembayaran (id_pembayaran, bank, name_rek, no_rek, program, nominal)
+                VALUES ('$id_pembayaran', '$bank', '$name_rek', '$no_rek', '$program', '$nominal')";
+    
+        // Jalankan query
+        if ($this->conn->query($sql) === TRUE) {
+            echo "<script>alert('Penambahan Data Berhasil');window.location=' form_pembayaran_admin.php';</script>";
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+        }
+    }
+
+    public function DataBank(){
+        $sql = "SELECT * FROM form_pembayaran";
+        $result = $this->conn->query($sql);
+        if($result->num_rows > 0){
+            return $result; 
+        } else {
+            return false;
+        }
+    }
+    public function deleteBank($id_pembayaran) {
+        if (empty($id_pembayaran)) {
+            return false;
+        }
+        $query = "DELETE FROM form_pembayaran WHERE id_pembayaran = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param('i', $id_pembayaran);
+        if ($stmt->execute()) {
+            if ($stmt->affected_rows == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }  
     }
 }

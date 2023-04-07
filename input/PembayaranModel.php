@@ -6,9 +6,11 @@ class Pembayaran extends Database{
     private $bank;
     private $name_rek;
     private $no_rek;
+    private $program;
     private $nominal;
 
-    public function __construct($id_pembayaran, $bank, $name_rek, $no_rek, $no_rek, $nominal){
-
+    public function __construct($id_pembayaran, $bank, $name_rek, $no_rek, $no_rek, $program, $nominal){
+        $db = new Database;
+        $this->conn = $db->conn;
     }
 }

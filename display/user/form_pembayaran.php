@@ -37,7 +37,7 @@
         </div>
         <div class="btn-container">
           <button class="sbt-button" type="submit" name="submit">Kirim</button>
-          <a href="table_jadwal.php" class="back-button">Kembali</a>
+          <a href="table_jadwal.php?id_formulir=<?php echo $row['id_formulir']; ?>" class="back-button">Kembali</a>
         </div>
       </form>
     </div>
