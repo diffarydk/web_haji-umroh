@@ -24,7 +24,7 @@ include_once('../../../input/DashboardModel.php');
       $delete = $admin->deleteBank($id_pembayaran);
       header("Location: form_pembayaran_admin.php");
        exit;
-                                      }
+ }
     $result = $admin->DataBank();
     if($result) {
       ?>
@@ -32,8 +32,8 @@ include_once('../../../input/DashboardModel.php');
         <div class="payment-info">
           <div class="row">
             <label for="bank">Nama Bank:</label>
-            <select id="bank" name="bank" onchange="updateFields()">
-              <option default> Pilih Bank </option>
+            <select id="bank" name="bank" onchange="updateFields()" required>
+              <option value="" selected> Pilih Bank </option>
               <?php
                    foreach($result as $row) {
                   echo "<option value='" .  $row['bank'] . "' data-id='" . $row['id_pembayaran'] . "' data-name-rek='" . ucwords($row['name_rek']) . "' data-no-rek='" . $row['no_rek'] . "' data-program='" . ucwords($row['program']) . "' data-nominal='" . $row['nominal'] . "'>" . $row['bank'] . "</option>";
@@ -58,7 +58,7 @@ include_once('../../../input/DashboardModel.php');
             <input type="text" id="amount" name="nominal" pattern="\d*"readonly>
           </div>
         </div>
-        <a href="form_pembayaran_admin.php?delete=<?= $row['id_pembayaran']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><button class="btn-hapus">Hapus</button></a>
+        <button class="btn-hapus" onclick="deleteData()">Hapus</button>
         <?php
       } else {
       ?>
@@ -138,6 +138,13 @@ include_once('../../../input/DashboardModel.php');
     }
   }
 }
+function deleteData() {
+    var id_pembayaran = document.querySelector('#bank option:checked').dataset.id;
+    var confirmed = confirm("Anda yakin ingin menghapus data ini?");
+    if (confirmed) {
+      window.location.href = "form_pembayaran_admin.php?delete=" + id_pembayaran;
+    }
+  }
     </script>
 </body>
 </html>
