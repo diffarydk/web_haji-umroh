@@ -36,7 +36,7 @@ public function updateFormulir($id_formulir, $id_jadwal, $tanggal_keberangkatan,
     }
   }
 
-  public function getId_pembayaran($id_pembayaran) {
+public function getIdpembayaran($id_pembayaran) {
     $sql = "SELECT * FROM form_pembayaran WHERE id_pembayaran='$id_pembayaran'";
     $result = $this->conn->query($sql);
     if ($result->num_rows > 0) {
@@ -46,11 +46,10 @@ public function updateFormulir($id_formulir, $id_jadwal, $tanggal_keberangkatan,
     }
   }
 
-  public function updatePembayaranFormulir($id_formulir, $id_pembayaran){
-    $sql = "UPDATE FORMULIR SET id_pembayaran_formulir = ? WHERE id_formulir=? ";
-    echo $sql; // output the SQL query for debugging purposes
+public function updatePembayaranFormulir($id_formulir, $id_pembayaran, $bukti_pembayaran){
+    $sql = "UPDATE formulir SET id_pembayaran_formulir=?, bukti_pembayaran =? WHERE id_formulir=?";
     $stmt = $this->conn->prepare($sql);
-    $stmt->bind_param("ii", $id_pembayaran, $id_formulir);
+    $stmt->bind_param("isi", $id_pembayaran, $bukti_pembayaran, $id_formulir);
     if($stmt->execute()){
         return true;
     } else {
@@ -58,13 +57,13 @@ public function updateFormulir($id_formulir, $id_jadwal, $tanggal_keberangkatan,
     }
 }
 
-  public function DataBank(){
-    $sql = "SELECT * FROM form_pembayaran";
-    $result = $this->conn->query($sql);
-    if($result->num_rows > 0){
-        return $result; 
-    } else {
-        return false;
-    }
+public function DataBank(){
+  $sql = "SELECT * FROM form_pembayaran";
+  $result = $this->conn->query($sql);
+  if($result->num_rows > 0){
+      return $result; 
+  } else {
+      return false;
+  }
 }
 }

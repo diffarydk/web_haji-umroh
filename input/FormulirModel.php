@@ -160,7 +160,7 @@ class Formulir extends Database{
       '$this->kecamatan', '$this->kelurahan', '$this->jalan', '$this->email', '$this->no_telp_rumah', '$this->no_telp_seluler',
       '$this->pendidikan_terakhir', '$this->pekerjaan', '$this->keluarga_yg_ikut', '$this->hubungan', '$this->no_telp',
       '$this->informasi_pendaftaran','$this->penyakit_kronis', '$this->keluarga_yg_bisa_dihubungi', '$this->hubungan_keluarga',
-      '$this->no_telp_keluarga', '$foto', '0', '$this->tanggal_keberangkatan', '$this->tanggal_pulang','$this->maskapai','$this->mekah','$this->madinah', '0', '0', '$this->timestamp', '$this->status')";
+      '$this->no_telp_keluarga', '$foto', '0', '$this->tanggal_keberangkatan', '$this->tanggal_pulang','$this->maskapai','$this->mekah','$this->madinah', '0', '', '$this->timestamp', '$this->status')";
 
 if (mysqli_query($this->conn, $query)) {
     return true;

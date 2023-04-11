@@ -1,9 +1,9 @@
 <?php
 require_once "../LinkModelController.php";
-$pembayaran = new PembayaranController();
-$pembayaran->handleForm();
-$admin = new admin();
-$result = $admin->DataBank();
+$pembayaran = new FormPembayaran();
+$pembayaran -> handlePembayaran();
+$id_formulir = $_GET['id_formulir'];
+$result = $pembayaran->GetAllBank();
 if($result) {
 ?>
 <!DOCTYPE html>
@@ -22,9 +22,9 @@ if($result) {
     <div class="payment-container">
     <form action="#" method="post" enctype="multipart/form-data">
         <div class="payment-info">
-          <div class="row">
+          <div class="row admin">
             <label for="bank">Nama Bank:</label>
-            <select id="bank" name="bank" onchange="updateFields()" required>
+            <select id="bank" name="bank" onchange="updateFields(); inputData();" required>
               <option value="" selected> Pilih Bank </option>
               <?php
                    foreach($result as $row) {
@@ -33,8 +33,8 @@ if($result) {
               ?>
             </select>
           </div>
-          <input type="hidden" name="id_pembayaran_formulir" value="<?php echo $row['id_pembayaran']; ?>">
-          <div class="row admin">
+          <input type="hidden" name="id_pembayaran" value="<?php echo $row['id_pembayaran']; ?>">
+          <div class="row">
             <label for="account-name">Nama Rekening:</label>
             <input type="text" id="account-name" name="name_rek" value="" readonly>
           </div>
@@ -55,11 +55,12 @@ if($result) {
       ?>
           <div class="row">
             <label for="proof">Bukti Pembayaran:</label>
-            <input type="file" id="proof" name="proof" accept="image/*" required>
+            <input type="file" id="proof" name="bukti_pembayaran" accept="image/*">
           </div>
         </div>
         <div class="btn-container">
-          <button class="sbt-button" type="submit" name="submit" onclick="inputData()">Kirim</button>
+        <input type="hidden" name="id_formulir" value="<?= $id_formulir; ?>"> 
+          <button class="sbt-button" type="submit" name="submit">Kirim</button>
           <a href="table_jadwal.php?id_formulir=<?php echo $row['id_formulir']; ?>" class="back-button">Kembali</a>
         </div>
       </form>
@@ -111,11 +112,9 @@ if($result) {
 }
 function inputData() {
     var id_pembayaran = document.querySelector('#bank option:checked').dataset.id;
-    var confirmed = confirm("Anda yakin ingin menghapus data ini?");
-    if (confirmed) {
-      window.location.href = "konfirmasi_pembayaran.php?id_pembayaran=" + id_pembayaran;
-    }
-  }
+    document.querySelector('input[name="id_pembayaran"]').value = id_pembayaran;
+}
+
     </script>
 </body>
 </html>
