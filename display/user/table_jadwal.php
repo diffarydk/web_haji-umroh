@@ -1,8 +1,10 @@
 <?php
+session_start();
 require_once "../LinkModelController.php";
 $jadwal = new TableController();
 $jadwal->handleForm();
-$id_formulir = $_GET['id_formulir'];
+$id_formulir = $_SESSION['id_formulir'];
+$_SESSION['id_formulir'] = $id_formulir;
 $rows = $jadwal->GetAllJadwal();
 ?>
 <!DOCTYPE html>
@@ -30,6 +32,7 @@ $rows = $jadwal->GetAllJadwal();
                 <th>Mekah</th>
                 <th>Madinah</th>
                 <th>Jumlah Sisa</th>
+                <th>Sisa Kursi</th>
                 <th>Pilih</th>
             </tr>
         </thead>
@@ -39,23 +42,31 @@ $rows = $jadwal->GetAllJadwal();
             ?>
             <tr class="schedule-row">
                 <td class="schedule-date">
-                    <input type="date" name="tanggal_keberangkatan" value="<?= $row['tanggal_keberangkatan']; ?>">
+                    <input type="date" name="tanggal_keberangkatan" value="<?= $row['tanggal_keberangkatan']; ?>" readonly>
                 </td>
                 <td class="schedule-availability">
-                    <input type="date" name="tanggal_pulang" value="<?= $row['tanggal_pulang']; ?>">
+                    <input type="date" name="tanggal_pulang" value="<?= $row['tanggal_pulang']; ?>" readonly>
                 </td>
                 <td class="schedule-return-date">
-                    <input type="text" name="maskapai" value="<?= $row['maskapai']; ?>">
+                    <input type="text" name="maskapai" value="<?= $row['maskapai']; ?>" readonly>
                 </td>
                 <td class="schedule-return-date">
-                    <input type="text" name="mekah" value="<?= $row['mekah']; ?>">
+                    <input type="text" name="mekah" value="<?= $row['mekah']; ?>" readonly>
                 </td>
                 <td class="schedule-return-date">
-                    <input type="text" name="madinah" value="<?= $row['madinah']; ?>">
+                    <input type="text" name="madinah" value="<?= $row['madinah']; ?>" readonly>
                 </td>
-                <td class="schedule-availability">20</td>
+
+                <td class="schedule-return-date">
+                    <input type="text" name="jumlah_kursi" value="<?= $row['jumlah_kursi']; ?>" readonly>
+                </td>
+
+                <td class="schedule-return-date">
+                    <input type="text" name="sisa_Kursi" value="<?= $row['sisa_kursi']; ?>" readonly>
+                </td>
+              
                 <td class="schedule-select">
-                    <input type="radio" name="id_jadwal" value="<?= $row['id_jadwal'];?>" onclick="submitForm()">
+                    <input type="radio" name="id_jadwal" value="<?= $row['id_jadwal'];?>">
                 </td>
             </tr>
             <?php 
@@ -65,7 +76,7 @@ $rows = $jadwal->GetAllJadwal();
     </table>
     
     <input type="hidden" name="id_formulir" value="<?= $id_formulir; ?>">
-    <a href="form-daftar.php?id_formulir=<?php echo $row['id_formulir']; ?>">
+    <a href="form-daftar.php">
         <button class="smpn sm-4"><p>Kembali</p></button>
     </a>
     <button class="smpn sm-2" type="submit" name="submit" ><p>Kirim</p></button>
@@ -103,6 +114,15 @@ $rows = $jadwal->GetAllJadwal();
     </div>
 </main>
     <script src="../../core/script/script.js"></script>
+</script>
+<script>
+    document.getElementById("jadwal-form").addEventListener("submit", function(event){
+    var konfirmasi = confirm("Apakah Anda yakin memilih jadwal ini?");
+    if(!konfirmasi){
+        event.preventDefault();
+    }
+});
+
 </script>
 </body>
 </html>

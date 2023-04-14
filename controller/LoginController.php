@@ -30,6 +30,16 @@ class LoginController extends LoginModel{
             }
         }
     }
+
+    public function handleForm() {
+       
+        if (isset($_POST['submit'])) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $this->login($username, $password);
+        }
+       
+    }
 }
     
     // Inisiasi LoginController

@@ -36,8 +36,8 @@ include_once('../../../input/DashboardModel.php');
                 <th>Maskapai</th>
                 <th>Mekah</th>
                 <th>Madinah</th>
-                <th>Jumlah</th>
-                <th>Sisa</th>
+                <th>Jumlah Kursi</th>
+                <th>Sisa Kursi</th>
                 <th>Hapus</th>
           </tr>
         </thead>
@@ -52,7 +52,7 @@ include_once('../../../input/DashboardModel.php');
           <td class="schedule-return-date" value=""><?= ucwords($row['mekah']) ?></td>
           <td class="schedule-return-date" value=""><?= ucwords($row['madinah']) ?></td>
           <td class="schedule-availability" value=""><?= $row['jumlah_kursi']; ?></td>
-          <td class="schedule-availability">20</td>
+          <td class="schedule-availability" value=""><?= $row['sisa_kursi']; ?></td>
           <td><a href="table_jadwal_admin.php?delete=<?= $row['id_jadwal']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus?')"><button class="uil uil-trash-alt"></button></a></td>
         </tr>
         <?php

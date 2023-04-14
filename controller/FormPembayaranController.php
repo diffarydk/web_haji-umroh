@@ -12,10 +12,27 @@ class FormPembayaran extends TableJadwal{
 
     public function handlePembayaran() {
       if(isset($_POST['submit'])){
-        
-        $id_pembayaran = $_POST['id_pembayaran'];
-        $bukti_pembayaran = $_POST['bukti_pembayaran'];
-        $pembayaran = $this->model->getIdpembayaran($id_pembayaran);
+        $id_jadwal = $_POST['id_jadwal'];
+              $jadwal = $this->model->getJadwalPerjalananById($id_jadwal);
+              
+              if ($jadwal == null) {
+                echo "Jadwal tidak ditemukan";
+                return;
+              }
+          
+              $id_formulir = $_POST['id_formulir'];
+              $tanggal_keberangkatan = $jadwal['tanggal_keberangkatan'];
+              $tanggal_pulang = $jadwal['tanggal_pulang'];
+              $maskapai = $jadwal['maskapai'];
+              $mekah = $jadwal['mekah'];
+              $madinah = $jadwal['madinah'];
+              $_SESSION['id_formulir'] = $id_formulir;
+          
+              $update = $this->model->updateFormulir($id_formulir, $id_jadwal, $tanggal_keberangkatan,$tanggal_pulang, $maskapai,$mekah, $madinah);
+              
+         $id_pembayaran = $_POST['id_pembayaran'];
+         $bukti_pembayaran = $_FILES['bukti_pembayaran']['name'];
+         $pembayaran = $this->model->getIdpembayaran($id_pembayaran);
         
         if ($pembayaran == null) {
           echo "Jadwal tidak ditemukan";
@@ -23,8 +40,7 @@ class FormPembayaran extends TableJadwal{
         }
 
         $id_formulir = $_POST['id_formulir'];
-
-        $upload_dir = '../core/imgbayar/';
+        $upload_dir = '../../core/ImgBayar/';
         $upload_file = $upload_dir . basename($_FILES['bukti_pembayaran']['name']);
     
         if (!move_uploaded_file($_FILES['bukti_pembayaran']['tmp_name'], $upload_file)) {

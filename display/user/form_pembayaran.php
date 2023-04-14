@@ -2,7 +2,13 @@
 require_once "../LinkModelController.php";
 $pembayaran = new FormPembayaran();
 $pembayaran -> handlePembayaran();
-$id_formulir = $_GET['id_formulir'];
+$id_formulir = $_SESSION['id_formulir'];
+$id_jadwal = $_SESSION['id_jadwal'];
+$tanggal_keberangkatan = $_SESSION['tanggal_keberangkatan'];
+$tanggal_pulang = $_SESSION['tanggal_pulang'];
+$maskapai = $_SESSION['maskapai'];
+$mekah = $_SESSION['mekah'];
+$madinah = $_SESSION['madinah'];
 $result = $pembayaran->GetAllBank();
 if($result) {
 ?>
@@ -20,7 +26,16 @@ if($result) {
     <main>
     <div class="page-container">
     <div class="payment-container">
-    <form action="#" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data">
+
+    <input type="hidden" name="tanggal_keberangkatan" value="<?= $tanggal_keberangkatan; ?>">
+    <input type="hidden" name="tanggal_pulang" value="<?= $tanggal_pulang; ?>">
+    <input type="hidden" name="maskapai" value="<?= $maskapai; ?>">
+    <input type="hidden" name="mekah" value="<?= $mekah; ?>">
+    <input type="hidden" name="madinah" value="<?= $madinah; ?>">
+    <input type="hidden" name="id_jadwal" value="<?=$id_jadwal;?>">
+    <input type="hidden" name="id_formullir" value="<?= $id_formulir; ?>">
+
         <div class="payment-info">
           <div class="row admin">
             <label for="bank">Nama Bank:</label>
@@ -61,7 +76,7 @@ if($result) {
         <div class="btn-container">
         <input type="hidden" name="id_formulir" value="<?= $id_formulir; ?>"> 
           <button class="sbt-button" type="submit" name="submit">Kirim</button>
-          <a href="table_jadwal.php?id_formulir=<?php echo $row['id_formulir']; ?>" class="back-button">Kembali</a>
+          <a href="table_jadwal.php?id_formulir=<?= $id_formulir; ?>" class="back-button">Kembali</a>
         </div>
       </form>
     </div>

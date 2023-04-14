@@ -1633,9 +1633,11 @@ text-align: center;
   background-color: #B3B3B3;
 }
 .uil-trash-alt{
-  position: relative;
-  left: 60px;
+  position: absolute;
+  right: 37px;
   font-size: 25px;
+  margin-right: 0.5rem;
+  top: 37px;
 }
 
 .list-item-login{

@@ -123,44 +123,40 @@ class Formulir extends Database{
 
       // $id_formulir = 1+
 
-      // $id_formulir = mt_rand(100000000, 999999999); // menghasilkan integer acak antara 100000000 dan 999999999
+      $id_formulir = mt_rand(100000000, 999999999); // menghasilkan integer acak antara 100000000 dan 999999999
 
-      // $check_id_formulir_query = "SELECT * FROM formulir WHERE id_formulir='$id_formulir' LIMIT 1";
-      // $result = mysqli_query($this->conn, $check_id_formulir_query);
-      // $formulir = mysqli_fetch_assoc($result);
+      $check_id_formulir_query = "SELECT * FROM formulir WHERE id_formulir='$id_formulir' LIMIT 1";
+      $result = mysqli_query($this->conn, $check_id_formulir_query);
+      $formulir = mysqli_fetch_assoc($result);
       
-      // // cek apakah id_formulir sudah ada di database
-      // // jika sudah, buat id_formulir baru sampai id_formulir unik
-      // while ($formulir) {
-      //     $id_formulir = mt_rand(100000000, 999999999);
-      //     $check_id_formulir_query = "SELECT * FROM formulir WHERE id_formulir='$id_formulir' LIMIT 1";
-      //     $result = mysqli_query($this->conn, $check_id_formulir_query);
-      //     $formulir = mysqli_fetch_assoc($result);
-      // }
+      // cek apakah id_formulir sudah ada di database
+      // jika sudah, buat id_formulir baru sampai id_formulir unik
+      while ($formulir) {
+          $id_formulir = mt_rand(100000000, 999999999);
+          $check_id_formulir_query = "SELECT * FROM formulir WHERE id_formulir='$id_formulir' LIMIT 1";
+          $result = mysqli_query($this->conn, $check_id_formulir_query);
+          $formulir = mysqli_fetch_assoc($result);
+      }
       
-      // $id_jadwal = mt_rand(100000000, 999999999); // menghasilkan integer acak antara 100000000 dan 999999999
+      $id_jadwal = mt_rand(100000000, 999999999); // menghasilkan integer acak antara 100000000 dan 999999999
 
-      // $check_id_formulir_query = "SELECT * FROM formulir WHERE id_formulir='$id_jadwal' LIMIT 1";
-      // $result = mysqli_query($this->conn, $check_id_formulir_query);
-      // $formulir = mysqli_fetch_assoc($result);
+      $check_id_formulir_query = "SELECT * FROM formulir WHERE id_formulir='$id_jadwal' LIMIT 1";
+      $result = mysqli_query($this->conn, $check_id_formulir_query);
+      $formulir = mysqli_fetch_assoc($result);
+
+      $_SESSION['id_formulir'] = $id_formulir;
+
       
-      // // cek apakah id_formulir sudah ada di database
-      // // jika sudah, buat id_formulir baru sampai id_formulir unik
-      // while ($formulir) {
-      //     $id_jadwal = mt_rand(100000000, 999999999);
-      //     $check_id_formulir_query = "SELECT * FROM formulir WHERE id_formulir='$id_jadwal' LIMIT 1";
-      //     $result = mysqli_query($this->conn, $check_id_formulir_query);
-      //     $formulir = mysqli_fetch_assoc($result);
-      // }
+     
       
-      $query ="INSERT INTO formulir VALUES ('','$this->id_users', '$this->program', '$this->kamar', 
+      $query ="INSERT INTO formulir VALUES ('$id_formulir','$this->id_users', '$this->program', '$this->kamar', 
       '$this->nama_lengkap', '$this->nik', '$this->nama_ayah_kandung', '$this->tempat_lahir', '$this->tanggal_lahir',
       '$this->no_paspor', '$this->tempat_dikeluarkan_paspor', '$this->tanggal_dikeluarkan_paspor', '$this->masa_berlaku_paspor',
       '$this->jenis_kelamin', '$this->golongan_darah', '$this->status_perkawinan', '$this->provinsi', '$this->kota_kabupaten',
       '$this->kecamatan', '$this->kelurahan', '$this->jalan', '$this->email', '$this->no_telp_rumah', '$this->no_telp_seluler',
       '$this->pendidikan_terakhir', '$this->pekerjaan', '$this->keluarga_yg_ikut', '$this->hubungan', '$this->no_telp',
       '$this->informasi_pendaftaran','$this->penyakit_kronis', '$this->keluarga_yg_bisa_dihubungi', '$this->hubungan_keluarga',
-      '$this->no_telp_keluarga', '$foto', '0', '$this->tanggal_keberangkatan', '$this->tanggal_pulang','$this->maskapai','$this->mekah','$this->madinah', '0', '', '$this->timestamp', '$this->status')";
+      '$this->no_telp_keluarga', '$foto', '0', '$this->tanggal_keberangkatan', '$this->tanggal_pulang','$this->maskapai','$this->mekah','$this->madinah','0','0', '$this->timestamp', '$this->status')";
 
 if (mysqli_query($this->conn, $query)) {
     return true;
@@ -177,14 +173,14 @@ if (mysqli_query($this->conn, $query)) {
       return $timestamp;
     }
 
-    public function get_id_formulir()
-    {
-      $query="SELECT id_formulir FROM formulir ORDER BY id_formulir DESC ";
-      $result = mysqli_query($this->conn, $query);
-      if ($result && $row = mysqli_fetch_assoc($result)) {
-        return $row['id_formulir'];
-      } else {
-        return false;
-      }
-    }
+    // public function get_id_formulir()
+    // {
+    //   $query="SELECT id_formulir FROM formulir ORDER BY id_formulir DESC ";
+    //   $result = mysqli_query($this->conn, $query);
+    //   if ($result && $row = mysqli_fetch_assoc($result)) {
+    //     return $row['id_formulir'];
+    //   } else {
+    //     return false;
+    //   }
+    // }
 }

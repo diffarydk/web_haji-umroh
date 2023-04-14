@@ -28,7 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <th>Maskapai</th>
                 <th>Mekah</th>
                 <th>Madinah</th>
-                <th>Jumlah</th>
+                <th>Jumlah Kursi</th>
+                <th>Sisa Kursi</th>
               </tr>
             </thead>
             <tbody>
@@ -39,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <td class="schedule-return-date"><input type="text" name="mekah" required></td>
                 <td class="schedule-return-date"><input type="text" name="madinah" required></td>
                 <td class="schedule-availability"><input type="text" name="jumlah_kursi" placeholder="Masukkan jumlah kursi" required></td>
+                <td class="schedule-availability"><input type="text" name="sisa_kursi" placeholder="Masukkan jumlah kursi" required></td>
               </tr>
             </tbody>
           </table>

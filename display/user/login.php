@@ -1,7 +1,8 @@
 <?php
+session_start();
 require_once "../LinkModelController.php";
 $loginController = new LoginController();
-$loginController->login($username =$_POST['username'],$password=$_POST['password']);
+$loginController->handleForm();
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +31,7 @@ $loginController->login($username =$_POST['username'],$password=$_POST['password
     </div>
     <input type="submit" name="submit" value="Login">
     <div class="signup_link">
-      Tidak punya akun? <a href="register.php">Register</a>
+      Tidak punya akun? <a href="register.html">Register</a>
     </div>
   </form>
 </div>

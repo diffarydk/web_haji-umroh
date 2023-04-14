@@ -22,7 +22,7 @@ include_once('../../input/DataFormulir.php');
         <h1 class="heading">Formulir Pendaftaran</h1>
         <form class="form" action="" method="post" enctype="multipart/form-data">
         <?php 
-        $formulir = new Formulir();
+        $formulir = new TableJadwal();
         $id_formulir = $_GET['id_formulir'] ?? null;
         $user = $formulir->getData($id_formulir);
 
@@ -120,7 +120,7 @@ if ($user) {
               <span class="note-1">*</span>
               <br>
               <?php 
-$formulir = new Formulir();
+$formulir = new TableJadwal();
 $id_formulir = $_GET['id_formulir'] ?? null;
 $row = $formulir->getWilayah($id_formulir);;
 if ($row) {

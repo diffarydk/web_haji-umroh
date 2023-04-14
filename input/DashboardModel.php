@@ -26,7 +26,7 @@ class admin extends Database {
     {
         $id_users = $_GET['id_users'] ?? null;
         if (isset($id_users)) {
-            $profilequery = "SELECT u.username, u.email, f.id_formulir, f.nama_lengkap, f.nik, f.time_stamp, f.status
+            $profilequery = "SELECT u.username, u.email, f.id_formulir, f.id_users, f.nama_lengkap, f.nik, f.id_jadwal_formulir, f.id_pembayaran_formulir, f.time_stamp, f.status
                              FROM users u 
                              JOIN formulir f ON u.id_users = f.id_users 
                              WHERE u.id_users='$id_users'
@@ -137,11 +137,12 @@ class admin extends Database {
         $mekah = $_POST['mekah'];
         $madinah = $_POST['madinah'];
         $jumlah_kursi = $_POST['jumlah_kursi'];
+        $sisa_kursi = $_POST['sisa_kursi'];
         
     
         // Buat query untuk insert data ke tabel table_jadwal
-        $sql = "INSERT INTO jadwal_perjalanan (id_jadwal, tanggal_keberangkatan,tanggal_pulang, maskapai, mekah, madinah , jumlah_kursi)
-                VALUES ('', '$tanggal_keberangkatan', '$tanggal_pulang', '$maskapai', '$mekah', '$madinah', '$jumlah_kursi')";
+        $sql = "INSERT INTO jadwal_perjalanan (id_jadwal, tanggal_keberangkatan,tanggal_pulang, maskapai, mekah, madinah , jumlah_kursi,sisa_kursi)
+                VALUES ('', '$tanggal_keberangkatan', '$tanggal_pulang', '$maskapai', '$mekah', '$madinah', '$jumlah_kursi','$sisa_kursi')";
     
         // Jalankan query
         if ($this->conn->query($sql) === TRUE) {
@@ -247,4 +248,18 @@ class admin extends Database {
             return false;
         }  
     }
+
+    public function DataFormulir($id_formulir){
+        $id_formulir = $_GET['id_formulir'];
+        $sql = "SELECT * FROM formulir WHERE id_formulir = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param('i', $id_formulir);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if($result->num_rows > 0){
+            return $result; 
+        } else {
+            return false;
+        }
+      }
 }

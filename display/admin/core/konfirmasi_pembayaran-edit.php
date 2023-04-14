@@ -1,3 +1,12 @@
+<?php
+require_once "../../../connection.php";
+require_once "../../../input/DashboardModel.php";
+$result = new admin();
+$id_formulir = $_GET['id_formulir'];
+$result = $result->DataFormulir($id_formulir);
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,33 +15,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selamat Datang</title>
     <link rel="stylesheet" href="../../../core/style/style.css"/>
+    <link rel="stylesheet" href="../../../core/style/konfirmasi.css"/>
 </head>
 <body>
     <main>
     <div class="hContainer">
-        <div class="bContainer">
-            <img class="img" src="../../../core/asset/LogoItkon.png" alt="">
-            <div class="line"></div>
-            <h3>Nomor Transaksi : </h3>
-            <div class="line n"></div>
-            <h3>Status Pembayaran : </h3>
-            <div class="line n"></div>
-            <h3>Status Transaksi : </h3>
-            <div class="sts">
-                <label for="sts"></label>
-                <select id="sts" name="sts">
-                  <option value="blm_stju" selected>Belum Disetujui</option>
-                  <option value="blm_stju">Tolak</option>
-                  <option value="stju">Setuju</option>
-                </select>
-                </div>
-            <div class="line n"></div>
-            <h3>Waktu Pembayaran : </h3>
-            <a href="dashboard_pembayaran.html"><button class="tombol">Kembali</button></a>
-            <button class="tombol-2" type="submit" value="submit">Simpan</button>
-          </div>
+    <div class="bContainer">
+    <img class="img" src="../../../core/asset/LogoItkon.png" alt="">
+    <div class="line">
+    <h3>Nomor Transaksi: <?php echo $row['id_users'] . $row['id_formulir'] . $row['id_jadwal_formulir'] . $row['id_pembayaran_formulir']; ?></h3>
+    </div>
+    <div class="line n"></div>
+    <h3>Foto Bukti Pembayaran : </h3>
+    <div class="line n"></div>
+    <h3>Status Transaksi : <button class="status"><?php echo ucfirst($row['status']);?> dikonfirmasi</button> </h3>
+    <div class="line n"></div>
+    <h3>Waktu Pembayaran : <?php echo $row['time_stamp'];?></h3>
+    <a href="#"><button class="tombol">Simpan</button></a>
+  </div>
+  <?php
+}
+?>
         <nav class="sidebar">
-            <img class="user-logo" src="../../../core/asset/icon-user.png" alt="user-logo" href="../welcome.html">
+            <img class="user-logo" src="../../../core/asset/icon-user.png" alt="user-logo" href="../welcome.php">
             <ul class="nav-list">
                 <li class="list-item"><a class="login" href="login.html">Login/Daftar</a></li>
                 <li class="list-item"><a class="fa" href="galeri.html">Galeri</a></li>

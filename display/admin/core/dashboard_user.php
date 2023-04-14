@@ -29,7 +29,13 @@ include_once('../../../input/ProfileModel.php');
                                                 ?>
                 <h1><?= $row['username']; ?></h1>
                 <p><?= $row['email']; ?></p>
-                <?php
+
+                <a href="dashboard_pembayaran.php?id_users=<?php echo $row['id_users']; ?>">
+                        <button class="tnm tnm-6">
+                          <p>Data Pembayaran</p>
+                        </button>
+                    </a>
+                    <?php
         }
       }
   }
@@ -38,11 +44,6 @@ include_once('../../../input/ProfileModel.php');
       echo "No Record Found";
   }
                                     ?>
-                <a href="dashboard_pembayaran.php">
-                        <button class="tnm tnm-6">
-                          <p>Data Pembayaran</p>
-                        </button>
-                    </a>
                     <a href="dashboard.php">
                       <button class="tnm tnm-7">
                         <p>Kembali</p>
@@ -118,11 +119,11 @@ if($result) {
     <script src="../../../core/script/script.js"></script>
     <script>
      const blocks = document.querySelectorAll('.block');
-let topValue = 0;
+    let topValue = 0;
 
-blocks.forEach(block => {
-  block.style.top = `${topValue}px`;
-  topValue += 100; // increase topValue by 100px for the next block
+    blocks.forEach(block => {
+    block.style.top = `${topValue}px`;
+    topValue += 100; // increase topValue by 100px for the next block
 });
 </script>
 </body>
