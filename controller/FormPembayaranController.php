@@ -56,5 +56,28 @@ class FormPembayaran extends TableJadwal{
         }
       }
       }
-    } 
+      public function updatePembayaranAdmin()
+      {
+        if(isset($_POST['submit'])){
+          $id_formulir = $_POST['id_formulir'];
+                $formulir = $this->model->getIdFormulir($id_formulir);
+
+                if ($formulir == null) {
+                  echo "Formulir Tidak Ditemukan";
+                  return;
+                }
+              
+                $id_formulir = $_POST['id_formulir'];
+                $status = $formulir['status'];
+                $_SESSION['id_formulir'] = $id_formulir;
+                
+                $update = $this->model->updatePembayaranStatus($id_formulir, $status);
+                if($update){
+                  echo "<script>alert('Pembayaran Berhasil')</script>";
+                } else {
+                  echo "<script>alert('Pembayaran Gagal');</script>";
+                }
+      }
+    }
+} 
 ?>

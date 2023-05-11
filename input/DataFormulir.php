@@ -24,6 +24,15 @@ public function getJadwalPerjalananById($id_jadwal) {
     return null;
   }
 }
+public function getIdFormulir($id_formulir) {
+  $sql = "SELECT * FROM jadwal_perjalanan WHERE id_formulir='$id_formulir'";
+  $result = $this->conn->query($sql);
+  if ($result->num_rows > 0) {
+    return $result->fetch_assoc();
+  } else {
+    return null;
+  }
+}
 public function updateSisaKursiJadwal($id_jadwal, $sisa_kursi){
   $sql = "UPDATE jadwal_perjalanan SET sisa_kursi=? WHERE id_jadwal=?";
   $stmt = $this->conn->prepare($sql);
@@ -79,6 +88,17 @@ public function getIdpembayaran($id_pembayaran) {
     $sql = "UPDATE formulir SET id_pembayaran_formulir=?, bukti_pembayaran =? WHERE id_formulir=?";
     $stmt = $this->conn->prepare($sql);
     $stmt->bind_param("isi", $id_pembayaran, $bukti_pembayaran, $id_formulir);
+    if($stmt->execute()){
+        return true;
+    } else {
+        return false;
+    }
+  }
+
+  public function updatePembayaranStatus($id_formulir, $status){
+    $sql = "UPDATE formulir SET status = ? WHERE id_formulir=?";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bind_param("si",  $status, $id_formulir);
     if($stmt->execute()){
         return true;
     } else {
