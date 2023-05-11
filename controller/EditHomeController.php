@@ -7,6 +7,7 @@
            $this->model = new EditHome();
         }
         
+        
         public function GetAll()
         {
             $row = $this->model->getGambar();
